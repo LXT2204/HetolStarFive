@@ -19,4 +19,5 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
 // Backend
 Route::get('/admin_login', 'App\Http\Controllers\AdminController@index');
-Route::get('/admin_layout', 'App\Http\Controllers\AdminController@bash');
+Route::get('/dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
+Route::post('/admin-dashboard', 'App\Http\Controllers\AdminController@dashboard');
