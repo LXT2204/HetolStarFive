@@ -173,6 +173,15 @@ a#scrollUp i {
     outline: 0 none;
 }
 
+.language{
+    border-radius: 0;
+    color: #696763;
+    font-size: 13px;
+    margin-right: 20px;
+    padding: 2px 15px;
+    margin-top: 5px;
+}
+
 .btn-group.open .dropdown-toggle {
     background: rgba(0, 0, 0, 0);
     box-shadow: none;
