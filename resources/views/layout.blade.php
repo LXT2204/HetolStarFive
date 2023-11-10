@@ -37,8 +37,8 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> phone</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i> Contact us</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> Email us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -62,19 +62,22 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{ asset('public/frontend/images/home/') }}"
+                            <a href="index.html"><img
+                                    src="{{ asset('public/frontend/images/home/HETOL-removebg-preview.png') }}"
                                     alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle usa"
                                     data-toggle="dropdown">
-                                    USA
+                                    Hồ Chí Minh
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
+                                    <li><a href="#">Hồ Chí Minh</a></li>
+                                    <li><a href="#">Hà Nội</a></li>
+                                    <li><a href="#">Đà Nẵng</a></li>
+                                    <li><a href="#">Sa Pa</a></li>
                                 </ul>
                             </div>
 
@@ -124,7 +127,7 @@
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -139,8 +142,8 @@
                                 <li><a href="{{ URL::to('/home') }}" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Room<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">rooms</a></li>
-                                        <li><a href="product-details.html">room Details</a></li>
+                                        <li><a href="shop.html">Products</a></li>
+                                        <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="cart.html">Cart</a></li>
                                         <li><a href="login.html">Login</a></li>

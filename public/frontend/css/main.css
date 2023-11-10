@@ -7,7 +7,6 @@
 
 body {
     font-family: "Roboto", sans-serif;
-    background: ;
     position: relative;
     font-weight: 400px;
 }
@@ -700,7 +699,9 @@ ul.sub-menu {
     color: #ccccc6;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
+
     line-height: 1.75;
+
     margin-top: 0;
     outline: medium none;
     padding: 7px;
