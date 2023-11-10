@@ -3,7 +3,7 @@
     <div class="table-agile-info">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Danh Mục Loại Phòng
+                Liệt kê phòng
             </div>
             <div class="row w3-res-tb">
                 <div class="col-sm-5 m-b-xs">
@@ -27,6 +27,13 @@
                 </div>
             </div>
             <div class="table-responsive">
+                <?php
+                $message = Session::get('message');
+                if ($message) {
+                    echo '<span class="text-alert">' . $message . '</span>';
+                    Session::put('message', null);
+                }
+                ?>
                 <table class="table table-striped b-t b-light">
                     <thead>
                         <tr>
@@ -35,42 +42,51 @@
                                     <input type="checkbox"><i></i>
                                 </label>
                             </th>
-                            <th>Tên Loại</th>
-                            <th>Hiển Thị</th>
+                            <th>Tên phòng</th>
+                            <th>Giá</th>
+                            <th>Hình phòng</th>
+                            <th>Danh mục</th>
+                            <th>Hiển thị</th>
 
                             <th style="width:30px;"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($all_category_room as $key => $cate_room)
+                        @foreach ($all_room as $key => $room)
                             <tr>
                                 <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label>
                                 </td>
-                                <td>{{ $cate_room->category_name }}</td>
+                                <td>{{ $room->room_name }}</td>
+                                <td>{{ $room->room_price }}đ</td>
+
+                                <td><img src=" ../../../../../public/uploads/room/{{ $room->room_image }}" height="100"
+                                        width="100">
+                                </td>
+                                <td>{{ $room->category_name }}</td>
 
                                 <td><span class="text-ellipsis">
                                         <?php
-                 if($cate_room->category_status==0){
-                  ?>
-                                        <a href="{{ URL::to('/unactive-category-room/' . $cate_room->category_id) }}"><span
+               if($room->room_status==0){
+                ?>
+                                        <a href="{{ URL::to('/unactive-room/' . $room->room_id) }}"><span
                                                 class="fa-thumb-styling fa fa-thumbs-up"></span></a>
                                         <?php
-                   }else{
-                  ?>
-                                        <a href="{{ URL::to('/active-category-room/' . $cate_room->category_id) }}"><span
+                 }else{
+                ?>
+                                        <a href="{{ URL::to('/active-room/' . $room->room_id) }}"><span
                                                 class="fa-thumb-styling fa fa-thumbs-down"></span></a>
                                         <?php
-                 }
-                ?>
+               }
+              ?>
                                     </span></td>
 
                                 <td>
-                                    <a href="{{ URL::to('/edit-category-room/' . $cate_room->category_id) }}"
-                                        class="active styling-edit" ui-toggle-class="">
+                                    <a href="{{ URL::to('/edit-room/' . $room->room_id) }}" class="active styling-edit"
+                                        ui-toggle-class="">
                                         <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-                                    <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')"
-                                        href="{{ URL::to('/delete-category-room/' . $cate_room->category_id) }}"
-                                        class="active styling-edit" ui-toggle-class="">
+                                    <a onclick="return confirm('Bạn có chắc là muốn xóa phòng này ko?')"
+                                        href="{{ URL::to('/delete-room/' . $room->room_id) }}" class="active styling-edit"
+                                        ui-toggle-class="">
                                         <i class="fa fa-times text-danger text"></i>
                                     </a>
                                 </td>
@@ -78,20 +94,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <!-----import data---->
-                <form action="{{ url('import-csv') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-
-                    <input type="file" name="file" accept=".xlsx"><br>
-
-                    <input type="submit" value="Import file Excel" name="import_csv" class="btn btn-warning">
-                </form>
-
-                <!-----export data---->
-                <form action="{{ url('export-csv') }}" method="POST">
-                    @csrf
-                    <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">
-                </form>
             </div>
             <footer class="panel-footer">
                 <div class="row">
@@ -101,12 +103,7 @@
                     </div>
                     <div class="col-sm-7 text-right text-center-xs">
                         <ul class="pagination pagination-sm m-t-none m-b-none">
-                            <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-                            <li><a href="">1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a href="">3</a></li>
-                            <li><a href="">4</a></li>
-                            <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+                            {!! $all_room->links() !!}
                         </ul>
                     </div>
                 </div>
