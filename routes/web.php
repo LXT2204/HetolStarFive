@@ -1,7 +1,5 @@
 <?php
 
-
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +12,22 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/danh-muc/{category_id}','App\Http\Controllers\CategoryRoom@show_category_home');
+Route::get('/thuong-hieu/{brand_slug}','BrandRoom@show_brand_home');
+Route::get('/chi-tiet/{room_id}','App\Http\Controllers\RoomController@details_room');
+
 // Frontend
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
-// Backend
+// BackendRoute::get('/edit-category-room/{categor_id}', 'App\Http\Controllers\CategoryRoom@edit_category_room');
+Route::get('/edit-category-room/{category_id}', 'App\Http\Controllers\CategoryRoom@edit_category_room');
 Route::get('/admin_login', 'App\Http\Controllers\AdminController@index');
 Route::get('/dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
 Route::get('/logout', 'App\Http\Controllers\AdminController@logout');
 Route::post('/admin_dashboard', 'App\Http\Controllers\AdminController@dashboard');
 //Room
 Route::get('/add-category-room', 'App\Http\Controllers\CategoryRoom@add_category_room');
-Route::get('/edit-category-room/{category-room-id}', 'App\Http\Controllers\CategoryRoom@edit_category_room');
-Route::get('/delete-category-room/{category-room-id}', 'App\Http\Controllers\CategoryRoom@delete_category_room');
+Route::get('/delete-category-room/{category_id}', 'App\Http\Controllers\CategoryRoom@delete_category_room');
 Route::get('/all-category-room', 'App\Http\Controllers\CategoryRoom@all_category_room');
 
 
@@ -33,10 +35,10 @@ Route::post('/export-csv', 'App\Http\Controllers\CategoryRoom@export_csv');
 Route::post('/import-csv', 'App\Http\Controllers\CategoryRoom@import_csv');
 
 
-Route::get('/unactive-category-room/{category_room_id}', 'App\Http\Controllers\CategoryRoom@unactive_category_room');
-Route::get('/active-category-room/{category_room_id}', 'App\Http\Controllers\CategoryRoom@active_category_room');
+Route::get('/unactive-category-room/{category_id}', 'App\Http\Controllers\CategoryRoom@unactive_category_room');
+Route::get('/active-category-room/{category_id}', 'App\Http\Controllers\CategoryRoom@active_category_room');
 
-//Send Mail 
+//Send Mail
 Route::get('/send-mail', 'HomeController@send_mail');
 
 //Login facebook
@@ -49,24 +51,14 @@ Route::get('/google/callback', 'AdminController@callback_google');
 
 Route::post('/save-category-room', 'App\Http\Controllers\CategoryRoom@save_category_room');
 Route::post('/update-category-room/{category_room_id}', 'App\Http\Controllers\CategoryRoom@update_category_room');
+Route::get('/delete-room/{room_id}', 'App\Http\Controllers\RoomController@delete_room');
 
-//Brand room
-Route::get('/add-brand-room', 'Brandroom@add_brand_room');
-Route::get('/edit-brand-room/{brand_room_id}', 'Brandroom@edit_brand_room');
-Route::get('/delete-brand-room/{brand_room_id}', 'Brandroom@delete_brand_room');
-Route::get('/all-brand-room', 'Brandroom@all_brand_room');
-
-Route::get('/unactive-brand-room/{brand_room_id}', 'Brandroom@unactive_brand_room');
-Route::get('/active-brand-room/{brand_room_id}', 'Brandroom@active_brand_room');
-
-Route::post('/save-brand-room', 'Brandroom@save_brand_room');
-Route::post('/update-brand-room/{brand_room_id}', 'Brandroom@update_brand_room');
 
 
 //room
 // Route::group(['middleware' => 'roles', 'roles'=>['admin','author']], function () {
-Route::get('/add-room', 'roomController@add_room');
-Route::get('/edit-room/{room_id}', 'roomController@edit_room');
+Route::get('/add-room', 'App\Http\Controllers\RoomController@add_room');
+Route::get('/edit-room/{room_id}', 'App\Http\Controllers\RoomController@edit_room');
 // });
 Route::get(
     'users',
@@ -83,12 +75,12 @@ Route::post('assign-roles', 'UserController@assign_roles');
 
 
 
-Route::get('/delete-room/{room_id}', 'roomController@delete_room');
-Route::get('/all-room', 'roomController@all_room');
-Route::get('/unactive-room/{room_id}', 'roomController@unactive_room');
-Route::get('/active-room/{room_id}', 'roomController@active_room');
-Route::post('/save-room', 'roomController@save_room');
-Route::post('/update-room/{room_id}', 'roomController@update_room');
+
+Route::get('/all-room', 'App\Http\Controllers\RoomController@all_room');
+Route::get('/unactive-room/{room_id}', 'App\Http\Controllers\RoomController@unactive_room');
+Route::get('/active-room/{room_id}', 'App\Http\Controllers\RoomController@active_room');
+Route::post('/save-room', 'App\Http\Controllers\RoomController@save_room');
+Route::post('/update-room/{room_id}', 'App\Http\Controllers\RoomController@update_room');
 
 //Coupon
 Route::post('/check-coupon', 'CartController@check_coupon');
