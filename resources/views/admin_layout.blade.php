@@ -52,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--logo start-->
             <div class="brand">
                 <a href="{{asset('public/backend/index.html')}}" class="logo">
-                    HETOL
+                    HETOL - Star Five
                 </a>
                 <div class="sidebar-toggle-box">
                     <div class="fa fa-bars"></div>
@@ -98,12 +98,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- sidebar menu start-->
                 <div class="leftside-navigation">
                     <ul class="sidebar-menu" id="nav-accordion">
-                        <li>
-                            <a class="active" href="{{URL::to('/dashboard')}}">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Tổng Quan</span>
-                            </a>
-                        </li>
 
                         <li class="sub-menu">
                             <a href="{{asset('public/backend/javascript:;')}}">

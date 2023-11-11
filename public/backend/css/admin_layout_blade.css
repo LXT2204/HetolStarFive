@@ -1,4 +1,31 @@
+.header.fixed-top.clearfix {
+    background-color: #a4bdf4;
+}
+
 .brand {
-    text-align: center;
     background-color: #5787ed;
+}
+
+.brand a {
+    text-align: center;
+    font-size: 22px;
+}
+
+div.sidebar-toggle-box {
+    background-color: #5787ed;
+}
+
+.search {
+    background-color: #5787ed;
+    border: 1px solid #a4bdf4;
+}
+
+.top-nav ul.top-menu>li>a {
+    background-color: #5787ed;
+    border: 1px solid #5787ed;
+}
+
+.footer {
+    background-color: #a4bdf4;
+    ;
 }
