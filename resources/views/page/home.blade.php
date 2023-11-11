@@ -24,10 +24,14 @@
                                     class="cart_room_price_{{ $room->room_id }}">
                                 <input type="hidden" value="1" class="cart_room_qty_{{ $room->room_id }}">
                                 <a href="{{ URL::to('/chi-tiet/' . $room->room_id) }}">
+
                                     <img src="../public/uploads/room/{{ $room->room_image }} " alt=""
                                         height="200" width="200" />
-                                    <h2>{{ number_format($room->room_price, 0, ',', '.') . ' ' . 'VNĐ' }}</h2>
-                                    <p>{{ $room->room_name }}</p>
+                                    <h1 style="color: rgb(4, 49, 252)">{{ $room->room_name }}</h1>
+                                    <h2>{{ number_format($room->room_price, 0, ',', '.') . ' ' . 'VNĐ' }} / Ngày</h2>
+
+
+                                    <p>92-94 Hang Trong Street Hoan Kiem District, Hà Nội Việt Nam</p>
                                 </a>
 
                                 <input type="button" value="Thêm giỏ hàng" class="btn btn-default add-to-cart"

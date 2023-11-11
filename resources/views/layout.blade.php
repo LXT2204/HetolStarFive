@@ -163,15 +163,13 @@
                     <div class="col-sm-12">
                         <div class="search_box_flex">
                             <div class="search_box">
-                                <div class="search_box_icon">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </div>
+
                                 <div class="search_box_search">
                                     <input type="text" placeholder="Search" />
                                 </div>
                             </div>
                             <div class="search_box_check_in">
-                                <i class="fa-regular fa-calendar"></i>
+                                <div class="fa-regular fa-calendar"></div>
                                 <div class="search_box_check_in_time">
                                     <p1>Check in</p1>
                                     <p2>--/--/--</p2>
@@ -183,8 +181,8 @@
                                     <p2>--/--/--</p2>
                                 </div>
                             </div>
-                            <div class="search_box_room">
-                                <i class="fa-solid fa-bed"></i>
+                            <div class="search_box_room" style="display: flex !important;">
+                                <div class="fa-solid fa-bed"></div>
                                 <div class="search_box_check_in_time">
                                     <p1>Guests and rooms</p1>
                                     <p2>2 Guests, 1 Room</p2>
