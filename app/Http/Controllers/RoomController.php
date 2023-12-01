@@ -131,7 +131,7 @@ class RoomController extends Controller
         Session::put('message','Xóa phòng thành công');
         return Redirect::to('all-room');
     }
-    public function details_room($room_slug , Request $request){
+    public function details_room($room_id , Request $request){
         //slide
 
 
@@ -153,10 +153,10 @@ class RoomController extends Controller
 
        $related_room = DB::table('tbl_room')
        ->join('tbl_category_room','tbl_category_room.category_id','=','tbl_room.category_id')
-       ->where('tbl_category_room.category_id',$category_id)->orderby(DB::raw('RAND()'))->paginate(3);
+       ->where('tbl_category_room.category_id',$category_id)->whereNotIn('tbl_room.room_id',[$room_id])->orderby(DB::raw('RAND()'))->paginate(3);
 
 
-       return view('page.room.show_details')->with('category',$cate_room)->with('room_details',$details_room)->with('meta_desc',$meta_desc);
+       return view('page.room.show_details')->with('category',$cate_room)->with('room_details',$details_room)->with('meta_desc',$meta_desc)->with('relate',$related_room);
 
    }
     //End Admin Page

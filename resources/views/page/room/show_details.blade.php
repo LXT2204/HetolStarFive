@@ -60,18 +60,22 @@
                         <span>
                             <h3 style="color:orange">{{ number_format($value->room_price, 0, ',', '.') . 'VNĐ' }} /Ngày
                             </h3>
+                            <div><label>Ngày Checkin: </label>
+									<input name="qty_checkin" type="date" min="1" class="cart_room_qty_checkin{{$value->room_id}}"  value="datenow" /></div>
+                            <div><label>Ngày Checkout: </label>
+									<input name="qty_checkout" type="date" min="1" class="cart_room_qty_checkout{{$value->room_id}}"  value="datenow"/>      
+									<input name="roomid_hidden" type="hidden"  value="{{$value->room_id}}" /></div>
 
-
-                            <input name="roomid_hidden" type="hidden" value="{{ $value->room_id }}" />
+                           
                         </span>
-                        <input type="button" value="Đặt phòng" class="btn btn-primary btn-sm add-to-cart"
+                        <input type="submit" value="Đặt phòng" class="btn btn-primary btn-sm add-to-cart"
                             data-id_room="{{ $value->room_id }}" name="add-to-cart">
                     </form>
 
                     <p><b>Tình trạng:</b> Còn phòng</p>
 
 
-                    <p><b>Danh mục:</b> {{ $value->category_name }}</p>
+                    <p><b>Loại Phòng:</b> {{ $value->category_name }}</p>
                     <a href=""><img src="images/room-details/share.png" class="share img-responsive"
                             alt="" /></a>
                 </div><!--/room-information-->
@@ -124,6 +128,27 @@
             </div>
         </div><!--/category-tab-->
     @endforeach
+    <div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">Các phòng gợi ý</h2>
+						
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">
+							@foreach($relate as $key => $lienquan)
+									<div class="col-sm-4">
+										<div class="room-image-wrapper">
+											 <div class="single-rooms">
+		                                        <div class="roominfo text-center room-related">
+		                                            <img src="../../../../public/uploads/room/{{ $value->room_image }}" alt="" />
+		                                            <h2>{{number_format($lienquan->room_price,0,',','.').' '.'VNĐ'}}</h2>
+		                                            <p>{{$lienquan->room_name}}</p>
+		                                         
+		                                        </div>
+		                                      
+                                			</div>
+										</div>
+									</div>
+							@endforeach		
 
     </div><!--/recommended_items-->
     {{--   <ul class="pagination pagination-sm m-t-none m-b-none">
