@@ -12,8 +12,6 @@
 			<div class="table-responsive cart_info">
 				<?php
 
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Gloudemans\Shoppingcart\Exceptions;
 				$content = Cart::Content();
 				
 				?>
@@ -27,23 +25,39 @@ use Gloudemans\Shoppingcart\Exceptions;
 							<td class="quantity">Số ngày thuê</td>
 							<td class="total">Tổng Tiền</td>
 							<td></td>
+							
+
 						</tr>
 					</thead>
 					<tbody>
 					@foreach($content as $v_content)
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="../../../../public/upload/{{$v_content->options->image}}" width="90" alt="" /></a>
+								<a href=""><img src="../../../../public/uploads/room/{{$v_content->options->image}}" height="90" width="90" alt="" /></a>
 							</td>
 							<td class="cart_description">
 								<h4>{{$v_content->name}}</></h4>
 							</td>
 							<td class="checkin">
 
-								<p>{{$v_content->options->qty_checkin}}</p>
+							<form action="{{URL::to('/update-cart-quantity-checkin')}}" method="POST">
+									{{ csrf_field() }}
+									<input class="cart_quantity_input" type="date" name="cart_qty_checkin" value="{{$v_content->options->qty_checkin}}"  >
+									<input class="hidden" value="{{$v_content->options->qty_checkout}}" name="cart_qty_checkout" >
+									<input type="hidden" value="{{$v_content->id}}" name="roomid_hidden" class="form-control">
+									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
+									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+									</form>
 							</td>
 							<td class="checkout">
-								<p>{{$v_content->options->qty_checkout}}</p>
+							<form action="{{URL::to('/update-cart-quantity-checkout')}}" method="POST">
+									{{ csrf_field() }}
+									<input class="cart_quantity_input" type="date" name="cart_qty_checkout" value="{{$v_content->options->qty_checkout}}"  >
+									<input class="hidden" value="{{$v_content->options->qty_checkin}}" name="cart_qty_checkin" >
+									<input type="hidden" value="{{$v_content->id}}" name="roomid_hidden" class="form-control">
+									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
+									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+									</form>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">
@@ -53,7 +67,7 @@ use Gloudemans\Shoppingcart\Exceptions;
 									?>
 								</p>
 							</td>
-							<td class="cart_delete">
+							<td >
 							<p class="cart_total_price">
 									
 									<?php
@@ -61,6 +75,9 @@ use Gloudemans\Shoppingcart\Exceptions;
 									echo number_format($subtotal).' '.'vnđ';
 									?>
 								</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href="{{URL::to('/delete-to-cart/'.$v_content->rowId)}}"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 						@endforeach
@@ -70,7 +87,41 @@ use Gloudemans\Shoppingcart\Exceptions;
 		</div>
 	</section> <!--/#cart_items-->
 
+	<section id="do_action">
+		<div class="container">
+		
+			<div class="row">
+			
+				<div class="col-sm-6">
+					<div class="total_area">
+						<ul>
+							<li>Tổng <span>{{Cart::subtotal().' '.'vnđ'}}</span></li>
+							<li>Thuế <span>{{Cart::tax().' '.'vnđ'}}</span></li>
+							<li>Thành tiền <span>{{Cart::total(0).' '.'vnđ'}}</span></li>
+						</ul>
+						{{-- 	<a class="btn btn-default update" href="">Update</a> --}}
+						<?php
+                                   $customer_id = Session::get('customer_id');
+                                   if($customer_id!=NULL){ 
+                                 ?>
+                                  
+                                <a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Thanh toán</a>
+                                <?php
+                            }else{
+                                 ?>
+                                 
+                                 <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a>
+                                 <?php 
+                             }
+                                 ?>
+                                
+							
 
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!--/#do_action-->
 
 
 @endsection

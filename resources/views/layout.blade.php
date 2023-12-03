@@ -30,6 +30,7 @@
 </head><!--/head-->
 
 <body>
+   
     <header id="header"><!--header-->
         <div class="header_top"><!--header_top-->
             <div class="container">
@@ -62,7 +63,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img
+                            <a href="/index.php"><img
                                     src="{{ asset('public/frontend/images/home/HETOL-removebg-preview.png') }}"
                                     alt="" /></a>
                         </div>
@@ -81,42 +82,30 @@
                                 </ul>
                             </div>
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa"
-                                    data-toggle="dropdown">
-                                    DOLLAR
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
-                                </ul>
-                            </div>
+                         
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa-solid fa-user"></i> Favorites</a></li>
-                                <li><a href="#"><i class="fa fa-star"></i> Recently Viewed</a></li>
-                                <li>
-                                    <div class="btn-group pull-right">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle language"
-                                                data-toggle="dropdown">
-                                                Tiếng Việt
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Tiếng Việt</a></li>
-                                                <li><a href="#">English</a></li>
-                                                <li><a href="#">繁體中文</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="#"><i class="fa-solid fa-user"></i> Tài Khoản</a></li>
+                                <li><a href="#"><i class="fa fa-star"></i> Yêu Thích</a></li>
+                             
+                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-cart"></i> Phòng đã chọn</a></li>
+                                <?php
+                                   $customer_id = Session::get('customer_id');
+                                   if($customer_id!=NULL){ 
+                                 ?>
+                                  <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+                                
+                                <?php
+                            }else{
+                                 ?>
+                                 <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
+                                 <?php 
+                             }
+                                 ?>
+
                             </ul>
                         </div>
                     </div>
@@ -160,32 +149,27 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" style="  text-align: center; margin-left:10%">
+                        <div class="search_box_flex">
+                            <form action="{{URL::to('/tim-kiem')}}" method="POST">
+        {{csrf_field()}}
                         <div class="search_box_flex">
                             <div class="search_box">
 
-                                <div class="search_box_search">
-                                    <input type="text" placeholder="Search" />
-                                </div>
+                              
                             </div>
                             <div class="search_box_check_in">
                                 <div class="fa-regular fa-calendar"></div>
                                 <div class="search_box_check_in_time">
                                     <p1>Check in</p1>
-                                    <p2>--/--/--</p2>
+                                    <input type="date" name="checkin_search" >
                                 </div>
                             </div>
                             <div class="search_box_check_out">
+                            <div class="fa-regular fa-calendar"></div>
                                 <div class="search_box_check_in_time">
                                     <p1>Check out</p1>
-                                    <p2>--/--/--</p2>
-                                </div>
-                            </div>
-                            <div class="search_box_room" style="display: flex !important;">
-                                <div class="fa-solid fa-bed"></div>
-                                <div class="search_box_check_in_time">
-                                    <p1>Guests and rooms</p1>
-                                    <p2>2 Guests, 1 Room</p2>
+                                    <input type="date" name="checkout_search" >
                                 </div>
                             </div>
                             <div class="search_box_btn">
@@ -193,6 +177,8 @@
                                     <span>Search</span>
                                 </button>
                             </div>
+                        </div>
+                        </form>
                         </div>
                     </div>
                 </div>

@@ -61,17 +61,24 @@
                             <h3 style="color:orange">{{ number_format($value->room_price, 0, ',', '.') . 'VNĐ' }} /Ngày
                             </h3>
                             <div><label>Ngày Checkin: </label>
-									<input name="qty_checkin" type="date" min="1" class="cart_room_qty_checkin{{$value->room_id}}"  value="datenow" /></div>
+									<input name="qty_checkin" type="date"  class="cart_room_qty_checkin{{$value->room_id}}"  value="NULL" /></div>
                             <div><label>Ngày Checkout: </label>
-									<input name="qty_checkout" type="date" min="1" class="cart_room_qty_checkout{{$value->room_id}}"  value="datenow"/>      
+									<input name="qty_checkout" type="date"  class="cart_room_qty_checkout{{$value->room_id}}"  value="NULL"/>      
 									<input name="roomid_hidden" type="hidden"  value="{{$value->room_id}}" /></div>
 
                            
                         </span>
-                        <input type="submit" value="Đặt phòng" class="btn btn-primary btn-sm add-to-cart"
+                       <div> <input type="submit" value="Đặt phòng" class="btn btn-primary btn-sm add-to-cart"
                             data-id_room="{{ $value->room_id }}" name="add-to-cart">
+                            <?php
+	$message = Session::get('message');
+	if($message){
+		echo '<span class="text-alert">'.$message.'</span>';
+		Session::put('message',null);
+	}
+	?></div>
                     </form>
-
+                   
                     <p><b>Tình trạng:</b> Còn phòng</p>
 
 

@@ -12,7 +12,9 @@ use App\Http\Requests; // Make sure you have the appropriate namespace for Reque
 use Illuminate\Support\Facades\Redirect;
 use Validator;
 use App\Http\Controllers\Captcha; // Assuming your Captcha rule is in the App\Rules namespace
-use Gloudemans\Shoppingcart\Cart;
+use Cart;
+
+
 class CartController extends Controller
 {
 
@@ -27,20 +29,81 @@ class CartController extends Controller
         $second_date = strtotime($quantity_checkout);
         $qty = abs($first_date - $second_date);
         $quantity= floor($qty / (60*60*24));
+        if (empty($quantity_checkin)||empty($quantity_checkout)) {
+            Session::put('message', 'Không được để trống checkin và checkout');
+            return Redirect::to('/chi-tiet/{{$roomId}}');
+          
+        } else if( strtotime($quantity_checkin)>strtotime($quantity_checkout) ){ Session::put('message', 'Ngày checkout phải lớn hơn ngày checkin');
+            return Redirect::to('/chi-tiet/{{$roomId}}');
+           
+        }
+        else{ $data['id'] = $room_info->room_id;
+            $data['qty']=$quantity;
+            $data['name'] = $room_info->room_name;
+            $data['price'] = $room_info->room_price;
+            $data['weight'] = $room_info->room_price;
+            $data['options']['qty_checkin'] = $quantity_checkin;
+            $data['options']['qty_checkout'] = $quantity_checkout;
+            $data['options']['image'] = $room_info->room_image;
+            Cart::add($data);
+           return Redirect::to('/show-cart');}
+       
+    }
+    public function delete_to_cart($rowId){
+        Cart::remove($rowId);
+        return Redirect::to('/show-cart');
+    }
+    public function update_cart_quantity_checkin(Request $request){
+        $rowId = $request->rowId_cart;
+        $quantity_checkin = $request->cart_qty_checkin;
+        $roomId = $request->roomid_hidden;
+        $quantity_checkout = $request->cart_qty_checkout;
+
+
+        $room_info = DB::table('tbl_room')->where('room_id',$roomId)->first();
+        $first_date = strtotime($quantity_checkin);
+        $second_date = strtotime($quantity_checkout);
+        $qty = abs($first_date - $second_date);
+        $quantity= floor($qty / (60*60*24));
 
         $data['id'] = $room_info->room_id;
         $data['qty']=$quantity;
         $data['name'] = $room_info->room_name;
         $data['price'] = $room_info->room_price;
         $data['weight'] = $room_info->room_price;
-        $data['qty_checkin'] = $quantity_checkin;
+        $data['options']['qty_checkin'] = $quantity_checkin;
         $data['options']['qty_checkout'] = $quantity_checkout;
         $data['options']['image'] = $room_info->room_image;
+       
         
+        Cart::update($rowId,$data);
+        return Redirect::to('/show-cart');
+    }
+    public function update_cart_quantity_checkout(Request $request){
+        $rowId = $request->rowId_cart;
+        $quantity_checkout = $request->cart_qty_checkout;
+        $roomId = $request->roomid_hidden;
+        $quantity_checkin = $request->cart_qty_checkin;
 
-       Cart::add($data);
-       return Redirect::to('/show-cart');
 
+        $room_info = DB::table('tbl_room')->where('room_id',$roomId)->first();
+        $first_date = strtotime($quantity_checkin);
+        $second_date = strtotime($quantity_checkout);
+        $qty = abs($first_date - $second_date);
+        $quantity= floor($qty / (60*60*24));
+
+        $data['id'] = $room_info->room_id;
+        $data['qty']=$quantity;
+        $data['name'] = $room_info->room_name;
+        $data['price'] = $room_info->room_price;
+        $data['weight'] = $room_info->room_price;
+        $data['options']['qty_checkin'] = $quantity_checkin;
+        $data['options']['qty_checkout'] = $quantity_checkout;
+        $data['options']['image'] = $room_info->room_image;
+       
+        
+        Cart::update($rowId,$data);
+        return Redirect::to('/show-cart');
     }
     public function show_cart(Request $request){
         //seo 

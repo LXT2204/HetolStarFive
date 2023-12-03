@@ -72,6 +72,7 @@ Route::get(
 Route::get('add-users', 'UserController@add_users');
 Route::post('store-users', 'UserController@store_users');
 Route::post('assign-roles', 'UserController@assign_roles');
+Route::post('/tim-kiem','App\Http\Controllers\HomeController@search');
 
 
 
@@ -92,27 +93,28 @@ Route::get('/list-coupon', 'CouponController@list_coupon');
 Route::post('/insert-coupon-code', 'CouponController@insert_coupon_code');
 
 //Cart
-Route::post('/update-cart-quantity', 'CartController@update_cart_quantity');
-Route::post('/update-cart', 'CartController@update_cart');
+Route::post('/update-cart-quantity-checkin', 'App\Http\Controllers\CartController@update_cart_quantity_checkin');
+Route::post('/update-cart-quantity-checkout', 'App\Http\Controllers\CartController@update_cart_quantity_checkout');
+
 Route::post('/save-cart', 'App\Http\Controllers\CartController@save_cart');
 Route::post('/add-cart-ajax', 'CartController@add_cart_ajax');
 Route::get('/show-cart', 'App\Http\Controllers\CartController@show_cart');
 Route::get('/gio-hang', 'CartController@gio_hang');
-Route::get('/delete-to-cart/{rowId}', 'CartController@delete_to_cart');
+Route::get('/delete-to-cart/{rowId}', 'App\Http\Controllers\CartController@delete_to_cart');
 Route::get('/del-room/{session_id}', 'CartController@delete_room');
 Route::get('/del-all-room', 'CartController@delete_all_room');
 
 //Checkout
-Route::get('/dang-nhap', 'CheckoutController@login_checkout');
+Route::get('/login-checkout', 'App\Http\Controllers\CheckoutController@login_checkout');
 Route::get('/del-fee', 'CheckoutController@del_fee');
 
-Route::get('/logout-checkout', 'CheckoutController@logout_checkout');
-Route::post('/add-customer', 'CheckoutController@add_customer');
+Route::get('/logout-checkout', 'App\Http\Controllers\CheckoutController@logout_checkout');
+Route::post('/add-customer', 'App\Http\Controllers\CheckoutController@add_customer');
 Route::post('/order-place', 'CheckoutController@order_place');
-Route::post('/login-customer', 'CheckoutController@login_customer');
-Route::get('/checkout', 'CheckoutController@checkout');
-Route::get('/payment', 'CheckoutController@payment');
-Route::post('/save-checkout-customer', 'CheckoutController@save_checkout_customer');
+Route::post('/login-customer', 'App\Http\Controllers\CheckoutController@login_customer');
+Route::get('/checkout', 'App\Http\Controllers\CheckoutController@checkout');
+Route::get('/payment', 'App\Http\Controllers\CheckoutController@payment');
+Route::post('/save-checkout-customer', 'App\Http\Controllers\CheckoutController@save_checkout_customer');
 Route::post('/calculate-fee', 'CheckoutController@calculate_fee');
 Route::post('/select-delivery-home', 'CheckoutController@select_delivery_home');
 Route::post('/confirm-order', 'CheckoutController@confirm_order');
