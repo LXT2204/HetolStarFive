@@ -33,15 +33,7 @@
 									
 									
 									
-									<div class="">
-										 <div class="form-group">
-		                                    <label for="exampleInputPassword1">Chọn hình thức thanh toán</label>
-		                                      <select name="payment_select"  class="form-control input-sm m-bot15 payment_select">
-		                                            <option value="0">Qua chuyển khoản</option>
-		                                            <option value="1">Tiền mặt</option>   
-		                                    </select>
-		                                </div>
-									</div>
+									
 									<input type="submit" value="Xác nhận đơn hàng" name="send_order" class="btn btn-primary btn-sm send_order">
 								</form>
 							
@@ -64,86 +56,7 @@
 
 							<form action="{{url('/update-cart')}}" method="POST">
 								@csrf
-							<table class="table table-condensed">
-								<thead>
-									<tr class="cart_menu">
-										<td class="image">Hình ảnh</td>
-										<td class="description">Tên phòng</td>
-										<td class="price">Giá phòng</td>
-										<td class="quantity">Số lượng</td>
-										<td class="total">Thành tiền</td>
-										<td></td>
-									</tr>
-								</thead>
-								<tbody>
-									
-
-									<tr>
-										<td class="cart_room">
-											
-										</td>
-										<td class="cart_description">
-											<h4><a href=""></a></h4>
-											
-										</td>
-										<td class="cart_price">
-											
-										</td>
-										<td class="cart_quantity">
-											<div class="cart_quantity_button">
-											
-											
-											
-											
-												
-											</div>
-										</td>
-										<td class="cart_total">
-											<p class="cart_total_price">
-											
-												
-											</p>
-										</td>
-										<td class="cart_delete">
-										
-										</td>
-									</tr>
-									
-									<tr>
-										<td><input type="submit" value="Cập nhật giỏ hàng" name="update_qty" class="check_out btn btn-default btn-sm"></td>
-										<td><a class="btn btn-default check_out" href="{{url('/del-all-room')}}">Xóa tất cả</a></td>
-										<td>
-											
-										</td>
-
-										
-										<td colspan="2">
-										
-										
-										</li>
-										
-									</td>
-									</tr>
-									
-								</tbody>
-
 								
-
-							</form>
-								@if(Session::get('cart'))
-								<tr><td>
-
-										<form method="POST" action="{{url('/check-coupon')}}">
-											@csrf
-												<input type="text" class="form-control" name="coupon" placeholder="Nhập mã giảm giá"><br>
-				                          		<input type="submit" class="btn btn-default check_coupon" name="check_coupon" value="Tính mã giảm giá">
-				                          	
-			                          		</form>
-			                          	</td>
-								</tr>
-								@endif
-
-							</table>
 
 						</div>
 					</div>

@@ -16,45 +16,64 @@
 			</div>
 			<div class="table-responsive cart_info">
 				<?php
-				$content = Cart::content();
+
+				$content = Cart::Content();
 				
 				?>
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
 							<td class="image">Hình ảnh</td>
-							<td class="description">Tên sp</td>
-							<td class="price">Giá</td>
-							<td class="quantity">Số lượng</td>
-							<td class="total">Tổng</td>
+							<td class="description">Tên phòng</td>
+							<td class="Check_in">Checkin</td>
+							<td class="Check_out">Checkout</td>
+							<td class="quantity">Số ngày thuê</td>
+							<td class="total">Tổng Tiền</td>
 							<td></td>
+							
+
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($content as $v_content)
+					@foreach($content as $v_content)
 						<tr>
-							<td class="cart_room">
-								<a href=""><img src="{{URL::to('public/uploads/room/'.$v_content->options->image)}}" width="90" alt="" /></a>
+							<td class="cart_product">
+								<a href=""><img src="../../../../public/uploads/room/{{$v_content->options->image}}" height="90" width="90" alt="" /></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{$v_content->name}}</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4>{{$v_content->name}}</></h4>
 							</td>
-							<td class="cart_price">
-								<p>{{number_format($v_content->price).' '.'vnđ'}}</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<form action="{{URL::to('/update-cart-quantity')}}" method="POST">
+							<td class="checkin">
+
+							<form action="{{URL::to('/update-cart-quantity-checkin')}}" method="POST">
 									{{ csrf_field() }}
-									<input class="cart_quantity_input" type="text" name="cart_quantity" value="{{$v_content->qty}}"  >
+									<input class="cart_quantity_input" type="date" name="cart_qty_checkin" value="{{$v_content->options->qty_checkin}}"  >
+									<input class="hidden" value="{{$v_content->options->qty_checkout}}" name="cart_qty_checkout" >
+									<input type="hidden" value="{{$v_content->id}}" name="roomid_hidden" class="form-control">
 									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
 									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
 									</form>
-								</div>
+							</td>
+							<td class="checkout">
+							<form action="{{URL::to('/update-cart-quantity-checkout')}}" method="POST">
+									{{ csrf_field() }}
+									<input class="cart_quantity_input" type="date" name="cart_qty_checkout" value="{{$v_content->options->qty_checkout}}"  >
+									<input class="hidden" value="{{$v_content->options->qty_checkin}}" name="cart_qty_checkin" >
+									<input type="hidden" value="{{$v_content->id}}" name="roomid_hidden" class="form-control">
+									<input type="hidden" value="{{$v_content->rowId}}" name="rowId_cart" class="form-control">
+									<input type="submit" value="Cập nhật" name="update_qty" class="btn btn-default btn-sm">
+									</form>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">
+									
+									<?php
+									echo $v_content->qty;
+									?>
+								</p>
+							</td>
+							<td >
+							<p class="cart_total_price">
 									
 									<?php
 									$subtotal = $v_content->price * $v_content->qty;

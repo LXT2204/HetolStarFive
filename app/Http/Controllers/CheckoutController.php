@@ -2,7 +2,6 @@
 
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use DB;
 use Session;
@@ -14,7 +13,7 @@ use App\City;
 use App\Province;
 use App\Wards;
 use App\Feeship;
-use App\Shipping;
+use App\booking;
 use App\Order;
 use App\OrderDetails;
 
@@ -72,6 +71,7 @@ public function payment(Request $request){
     return view('page.checkout.payment')->with('category',$cate_room)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
 
 }
+
 public function logout_checkout(){
     Session::forget('customer_id');
     return Redirect::to('/login-checkout');
@@ -91,5 +91,58 @@ public function login_customer(Request $request){
     }
     Session::save();
 
+}
+public function order_place(Request $request){
+   
+    //insert payment_method
+    //seo 
+    $meta_desc = "Đăng nhập thanh toán"; 
+    $meta_keywords = "Đăng nhập thanh toán";
+    $meta_title = "Đăng nhập thanh toán";
+    $url_canonical = $request->url();
+    //--seo 
+    $data = array();
+    $data['payment_method'] = $request->payment_option;
+    $data['payment_status'] = 'Đang chờ xử lý';
+    $payment_id = DB::table('tbl_payment')->insertGetId($data);
+
+    //insert order
+    $order_data = array();
+    $order_data['customer_id'] = Session::get('customer_id');
+    $order_data['booking_id'] = Session::get('booking_id');
+    $order_data['payment_id'] = $payment_id;
+    $order_data['order_total'] = Cart::total();
+    $order_data['order_status'] = 'Đang chờ xử lý';
+    $order_id = DB::table('tbl_order')->insertGetId($order_data);
+
+    //insert order_details
+    $content = Cart::content();
+    foreach($content as $v_content){
+        $order_d_data['order_id'] = $order_id;
+        $order_d_data['room_id'] = $v_content->id;
+        $order_d_data['room_name'] = $v_content->name;
+        $order_d_data['room_price'] = $v_content->price;
+        $order_d_data['checkin'] = $v_content->option->qty_checkin;
+        $order_d_data['checkout'] = $v_content->options->qty_checkout;
+
+        DB::table('tbl_order_details')->insert($order_d_data);
+    }
+    if($data['payment_method']==1){
+
+        echo 'Thanh toán thẻ ATM';
+
+    }elseif($data['payment_method']==2){
+        Cart::destroy();
+
+        $cate_room = DB::table('tbl_category_room')->where('category_status','0')->orderby('category_id','desc')->get();
+       
+        return view('page.checkout.handcash')->with('category',$cate_room)->with('meta_desc',$meta_desc)->with('meta_keywords',$meta_keywords)->with('meta_title',$meta_title)->with('url_canonical',$url_canonical);
+
+    }else{
+        echo 'Thẻ ghi nợ';
+
+    }
+    
+    // // return Redirect::to('/payment');
 }
 }

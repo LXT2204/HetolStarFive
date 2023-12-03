@@ -110,7 +110,7 @@ Route::get('/del-fee', 'CheckoutController@del_fee');
 
 Route::get('/logout-checkout', 'App\Http\Controllers\CheckoutController@logout_checkout');
 Route::post('/add-customer', 'App\Http\Controllers\CheckoutController@add_customer');
-Route::post('/order-place', 'CheckoutController@order_place');
+Route::post('/order-place', 'App\Http\Controllers\CheckoutController@order_place');
 Route::post('/login-customer', 'App\Http\Controllers\CheckoutController@login_customer');
 Route::get('/checkout', 'App\Http\Controllers\CheckoutController@checkout');
 Route::get('/payment', 'App\Http\Controllers\CheckoutController@payment');
