@@ -3,7 +3,7 @@
     <div class="table-agile-info">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Danh Mục Loại Phòng
+                User
             </div>
             <div class="row w3-res-tb">
                 <div class="col-sm-5 m-b-xs">
@@ -13,7 +13,7 @@
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-3">
-                 
+                   
                 </div>
             </div>
             <div class="table-responsive">
@@ -23,41 +23,31 @@
                             <th style="width:20px;">
                              
                             </th>
-                            <th>Tên Loại</th>
-                            <th>Hiển Thị</th>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>SĐT</th>
+                            <th>Địa chỉ</th>
+
+
 
                             <th style="width:30px;"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($all_category_room as $key => $cate_room)
+                        @foreach ($all_user as $key => $user)
                             <tr>
                                 <td></label>
                                 </td>
-                                <td>{{ $cate_room->category_name }}</td>
-
-                                <td><span class="text-ellipsis">
-                                        <?php
-                 if($cate_room->category_status==0){
-                  ?>
-                                        <a href="{{ URL::to('/unactive-category-room/' . $cate_room->category_id) }}"><span
-                                                class="fa-thumb-styling fa fa-thumbs-up"></span></a>
-                                        <?php
-                   }else{
-                  ?>
-                                        <a href="{{ URL::to('/active-category-room/' . $cate_room->category_id) }}"><span
-                                                class="fa-thumb-styling fa fa-thumbs-down"></span></a>
-                                        <?php
-                 }
-                ?>
-                                    </span></td>
-
+                                <td>{{ $user->customer_name }}</td>
+                                <td>{{ $user->customer_email }}</td>
+                                <td>{{ $user->customer_phone }}</td>
+                                <td>{{ $user->customer_address }}</td>
                                 <td>
-                                    <a href="{{ URL::to('/edit-category-room/' . $cate_room->category_id) }}"
+                                    <a href="{{ URL::to('/edit-user/' . $user->customer_id) }}"
                                         class="active styling-edit" ui-toggle-class="">
                                         <i class="fa fa-pencil-square-o text-success text-active"></i></a>
                                     <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')"
-                                        href="{{ URL::to('/delete-category-room/' . $cate_room->category_id) }}"
+                                        href="{{ URL::to('/delete-user/' . $user->customer_id) }}"
                                         class="active styling-edit" ui-toggle-class="">
                                         <i class="fa fa-times text-danger text"></i>
                                     </a>

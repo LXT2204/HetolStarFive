@@ -290,21 +290,43 @@
 
                         <div class="price-range"><!--price-range-->
                             <h2>KHOẢNG TIỀN</h2>
-                            <div class="well text-center">
-                                <input type="text" class="span2" value="" data-slider-min="0"
-                                    data-slider-max="30000000" data-slider-step="5" data-slider-value="[0,30000000]"
-                                    id="sl2"><br />
-                                <b class="pull-left">0 VNĐ</b> <b class="pull-right">30.000.000 VNĐ</b>
-                            </div>
-                        </div><!--/price-range-->
+                            <form action="{{ url('/tim-kiem-khoang-tien') }}" method="POST" id="searchForm">
+    {{ csrf_field() }}
+    <div class="well text-center">
+        <input type="text" name="price_search" id="price_search" class="span2" value="" data-slider-min="0"
+            data-slider-max="30000000" data-slider-step="100000" data-slider-value="[0,30000000]" id="sl2"><br />
+        <b class="pull-left">0 VNĐ</b> <b class="pull-right">30.000.000 VNĐ</b><br />
+        <button type="submit">
+            <span>Search</span>
+        </button>
+    </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var slider = new Slider('#price_search');
+
+        // Sự kiện slideStop xảy ra khi người dùng kết thúc kéo thanh trượt
+        slider.on('slideStop', function (value) {
+            // Lấy giá trị từng đỉnh (min và max)
+            var minValue = value[0];
+            var maxValue = value[1];
+
+            // Gán giá trị vào input hidden để gửi về máy chủ khi form được submit
+            $('#price_search').val(minValue + ',' + maxValue);
+        });
+    });
+</script>
 
                         <div class="shipping text-center"><!--shipping-->
                             <img src="{{ asset('public/frontend/images/home/') }}" alt="" />
-                        </div><!--/shipping-->
-
+                        </div>
                     </div>
                 </div>
-
+                </div>
                 <div class="col-sm-9 padding-right">
                     @yield('content')
                 </div>

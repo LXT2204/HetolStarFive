@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->text('room_desc');
             $table->text('room_content');
-            $table->string('room_price');
+            $table->float('room_price');
             $table->string('room_image');
             $table->integer('room_status');
             $table->timestamps();
