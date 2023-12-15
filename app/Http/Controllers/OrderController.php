@@ -48,4 +48,25 @@ class OrderController extends Controller
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
         
     }
+    public function accept($orderId)
+    {$this->AuthLogin();
+        $data = array();
+        $data['order_status'] = 2;
+
+        DB::table('tbl_order')->where('order_id', $orderId)->update($data);
+        return Redirect::to('manage-order');
+    }
+    public function refuse($orderId)
+    {$this->AuthLogin();
+        $data = array();
+        $data['order_status'] = 0;
+
+        DB::table('tbl_order')->where('order_id', $orderId)->update($data);
+        return Redirect::to('manage-order');
+    }
+    public function delete_order($orderId)
+    {$this->AuthLogin();
+        DB::table('tbl_order')->where('order_id', $orderId)->delete();
+        return Redirect::to('manage-order');
+    }
 }

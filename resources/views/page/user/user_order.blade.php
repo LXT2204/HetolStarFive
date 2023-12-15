@@ -1,5 +1,5 @@
-@extends('admin_layout')
-@section('admin_content')
+@extends('layout')
+@section('content')
 <div class="table-agile-info">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -53,15 +53,7 @@
 
 
                         <td>
-                            <a href="{{URL::to('/view-order/'.$ord->order_id)}}" class="active styling-edit"
-                                ui-toggle-class="">
-                                <i class="fa fa-eye text-success text-active"></i></a>
 
-                            <a onclick="return confirm('Bạn có chắc là muốn xóa đặt phòng này ko?')"
-                                href="{{URL::to('/delete-order/'.$ord->order_id)}}" class="active styling-edit"
-                                ui-toggle-class="">
-                                <i class="fa fa-times text-danger text"></i>
-                            </a>
 
                         </td>
                     </tr>
@@ -84,4 +76,5 @@
 
     </div>
 </div>
+
 @endsection

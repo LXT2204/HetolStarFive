@@ -54,7 +54,6 @@ class RoomController extends Controller
         $data['category_id'] = $request->room_cate;
 
         $data['room_status'] = $request->room_status;
-        $data['room_image'] = $request->room_status;
         $get_image = $request->file('room_image');
 
         if($get_image){
@@ -107,21 +106,18 @@ class RoomController extends Controller
         $data['category_id'] = $request->room_cate;
 
         $data['room_status'] = $request->room_status;
-        $get_image = $request->file('image');
-        if ($get_image) {
+        $get_image = $request->file('room_image');
+                if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
-            $new_image = $name_image.rand(0, 99) . '.'.$get_image->getClientOriginalExtension();
-            $get_image->move('public/uploads/room',$get_name_image);
-            $data['image'] =   $get_name_image ;
-            DB::table('tbl_room')->insert($data);
-            Session::put('message', 'Add room successfully!');
-            return Redirect::to('add-room');
+            $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('public/uploads/room',$new_image);
+            $data['room_image'] = $new_image;
+            DB::table('tbl_room')->where('room_id',$room_id)->update($data);
+            Session::put('message', 'update room successfully!');
+            return Redirect::to('all-room');
         }
-        $data['image'] = '';
-        DB::table('tbl_room')->insert($data);
-        Session::put('message', 'Added room successfully!');
-        return Redirect::to('add-room');
+        
 
     }
     public function delete_room($room_id){$this->AuthLogin();

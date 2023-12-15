@@ -148,6 +148,37 @@ public function order_place(Request $request){
     
     // // return Redirect::to('/payment');
 }
+public function show_cart($customerId){
+    $all_order = DB::table('tbl_order')->where('tbl_order.customer_id', $customerId)
+    ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+    ->select('tbl_order.*','tbl_customers.customer_name')
+    ->orderby('tbl_order.order_id','desc')->get();
+    $cate_room = DB::table('tbl_category_room')->where('category_status','0')->orderby('category_id','desc')->get(); 
+
+    
+    return view('page.user.user_order')->with('all_order',$all_order)->with('category',$cate_room);
+    
+}
+public function edit_customer($customerId){
+
+        $edit_user = DB::table('tbl_customers')->where('customer_id', $customerId)->get();
+        $cate_room = DB::table('tbl_category_room')->where('category_status','0')->orderby('category_id','desc')->get(); 
+
+        return view('page.user.user_edit')->with('edit_user',$edit_user)->with('category',$cate_room);
 
 
+}
+public function update_user(Request $request, $customer_id)
+    {
+        $data = array();
+        $data['customer_name'] = $request->customer_name;
+        $data['customer_phone'] = $request->customer_phone;
+        $data['customer_email'] = $request->customer_email;
+        $data['customer_password'] = md5($request->customer_password);
+        $data['customer_address'] = $request->customer_address;
+        DB::table('tbl_customers')->where('customer_id', $customer_id)->update($data);
+        Session::put('message', 'Cập nhật user thành công');
+        return Redirect::to('');
+
+    }
 }

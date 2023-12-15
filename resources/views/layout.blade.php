@@ -27,12 +27,15 @@
         href="{{ asset('public/frontend/images/ico/apple-touch-icon-72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed"
         href="{{ asset('public/frontend/images/ico/apple-touch-icon-57-precomposed.png') }}">
-</head><!--/head-->
+</head>
+<!--/head-->
 
 <body>
-   
-    <header id="header"><!--header-->
-        <div class="header_top"><!--header_top-->
+
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
@@ -56,9 +59,11 @@
                     </div>
                 </div>
             </div>
-        </div><!--/header_top-->
+        </div>
+        <!--/header_top-->
 
-        <div class="header-middle"><!--header-middle-->
+        <div class="header-middle">
+            <!--header-middle-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
@@ -82,27 +87,35 @@
                                 </ul>
                             </div>
 
-                         
+
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa-solid fa-user"></i> Tài Khoản</a></li>
-                                <li><a href="#"><i class="fa fa-star"></i> Yêu Thích</a></li>
-                             
-                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-cart"></i> Phòng đã chọn</a></li>
+
                                 <?php
                                    $customer_id = Session::get('customer_id');
                                    if($customer_id!=NULL){ 
                                  ?>
-                                  <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
-                                
+                                <li><a href="{{ URL::to('/user/' . $customer_id) }}"><i class="fa-solid fa-user"></i>
+                                        Tài Khoản</a></li>
+
+
+                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-cart"></i> Phòng đã chọn</a>
+                                </li>
+                                <li><a href="{{ URL::to('/cart/' . $customer_id) }}"><i class="fa fa-cart"></i>
+                                        Thông tin đơn đặt</a></li>
+                                <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
+                                </li>
+
+
                                 <?php
                             }else{
                                  ?>
-                                 <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
-                                 <?php 
+                                <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                </li>
+                                <?php 
                              }
                                  ?>
 
@@ -111,82 +124,55 @@
                     </div>
                 </div>
             </div>
-        </div><!--/header-middle-->
+        </div>
+        <!--/header-middle-->
 
-        <div class="header-bottom"><!--header-bottom-->
+        <div class="header-bottom">
+            <!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="mainmenu pull-left">
-                            <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="{{ URL::to('/home') }}" class="active">Home</a></li>
-                                <li class="dropdown"><a href="#">Room<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="col-sm-12" style="  text-align: center; margin-left:10%">
                         <div class="search_box_flex">
                             <form action="{{URL::to('/tim-kiem')}}" method="POST">
-        {{csrf_field()}}
-                        <div class="search_box_flex">
-                            <div class="search_box">
+                                {{csrf_field()}}
+                                <div class="search_box_flex">
+                                    <div class="search_box">
 
-                              
-                            </div>
-                            <div class="search_box_check_in">
-                                <div class="fa-regular fa-calendar"></div>
-                                <div class="search_box_check_in_time">
-                                    <p1>Check in</p1>
-                                    <input type="date" name="checkin_search" >
+
+                                    </div>
+                                    <div class="search_box_check_in">
+                                        <div class="fa-regular fa-calendar"></div>
+                                        <div class="search_box_check_in_time">
+                                            <p1>Check in</p1>
+                                            <input type="date" name="checkin_search">
+                                        </div>
+                                    </div>
+                                    <div class="search_box_check_out">
+                                        <div class="fa-regular fa-calendar"></div>
+                                        <div class="search_box_check_in_time">
+                                            <p1>Check out</p1>
+                                            <input type="date" name="checkout_search">
+                                        </div>
+                                    </div>
+                                    <div class="search_box_btn">
+                                        <button>
+                                            <span>Search</span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="search_box_check_out">
-                            <div class="fa-regular fa-calendar"></div>
-                                <div class="search_box_check_in_time">
-                                    <p1>Check out</p1>
-                                    <input type="date" name="checkout_search" >
-                                </div>
-                            </div>
-                            <div class="search_box_btn">
-                                <button>
-                                    <span>Search</span>
-                                </button>
-                            </div>
-                        </div>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><!--/header-bottom-->
-    </header><!--/header-->
+        </div>
+        <!--/header-bottom-->
+    </header>
+    <!--/header-->
 
-    <section id="slider"><!--slider-->
+    <section id="slider">
+        <!--slider-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -211,8 +197,7 @@
                                 <div class="col-sm-6">
                                     <img src="{{ asset('public/frontend/images/home/Introducing-InterContinental-Danang-Danang-Private-Car.jpeg') }}"
                                         class="girl img-responsive" alt="" />
-                                    <img src="{{ asset('public/frontend/images/home/') }}" class="pricing"
-                                        alt="" />
+                                    <img src="{{ asset('public/frontend/images/home/') }}" class="pricing" alt="" />
                                 </div>
                             </div>
                             <div class="item">
@@ -227,8 +212,7 @@
                                 <div class="col-sm-6">
                                     <img src="{{ asset('public/frontend/images/home/InterContinental+Danang+Sun+Peninsula+Resort.jpg') }}"
                                         class="girl img-responsive" alt="" />
-                                    <img src="{{ asset('public/frontend/images/home/') }}" class="pricing"
-                                        alt="" />
+                                    <img src="{{ asset('public/frontend/images/home/') }}" class="pricing" alt="" />
                                 </div>
                             </div>
 
@@ -245,8 +229,7 @@
                                 <div class="col-sm-6">
                                     <img src="{{ asset('public/frontend/images/home/002955-01-PHS_Pool_Hero_mHQ-Park Hyatt Saigon.jpg') }}"
                                         class="girl img-responsive" alt="" />
-                                    <img src="{{ asset('public/frontend/images/home/') }}" class="pricing"
-                                        alt="" />
+                                    <img src="{{ asset('public/frontend/images/home/') }}" class="pricing" alt="" />
                                 </div>
                             </div>
 
@@ -263,69 +246,78 @@
                 </div>
             </div>
         </div>
-    </section><!--/slider-->
+    </section>
+    <!--/slider-->
 
-    <section id="product"> <!-- product -->
+    <section id="product">
+        <!-- product -->
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
                         <h2>LOẠI PHÒNG</h2>
-                        <div class="panel-group category-products" id="accordian"><!--category-products-->
+                        <div class="panel-group category-products" id="accordian">
+                            <!--category-products-->
                             @foreach ($category as $key => $category)
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a
-                                                href="{{ URL::to('/danh-muc/' . $category->category_id) }}">{{ $category->category_name }}</a>
-                                        </h4>
-                                    </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a
+                                            href="{{ URL::to('/danh-muc/' . $category->category_id) }}">{{ $category->category_name }}</a>
+                                    </h4>
                                 </div>
+                            </div>
                             @endforeach
 
 
-                        </div><!--/category-rooms-->
+                        </div>
+                        <!--/category-rooms-->
 
 
 
-                        <div class="price-range"><!--price-range-->
+                        <div class="price-range">
+                            <!--price-range-->
                             <h2>KHOẢNG TIỀN</h2>
                             <form action="{{ url('/tim-kiem-khoang-tien') }}" method="POST" id="searchForm">
-    {{ csrf_field() }}
-    <div class="well text-center">
-        <input type="text" name="price_search" id="price_search" class="span2" value="" data-slider-min="0"
-            data-slider-max="30000000" data-slider-step="100000" data-slider-value="[0,30000000]" id="sl2"><br />
-        <b class="pull-left">0 VNĐ</b> <b class="pull-right">30.000.000 VNĐ</b><br />
-        <button type="submit">
-            <span>Search</span>
-        </button>
-    </div>
-</form>
+                                {{ csrf_field() }}
+                                <div class="well text-center">
+                                    <input type="text" name="price_search" id="price_search" class="span2" value=""
+                                        data-slider-min="0" data-slider-max="30000000" data-slider-step="100000"
+                                        data-slider-value="[0,30000000]" id="sl2"><br />
+                                    <b class="pull-left">0 VNĐ</b> <b class="pull-right">30.000.000 VNĐ</b><br />
+                                    <button type="submit">
+                                        <span>Search</span>
+                                    </button>
+                                </div>
+                            </form>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js"></script>
+                            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                            <script
+                                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js">
+                            </script>
 
-<script>
-    $(document).ready(function () {
-        var slider = new Slider('#price_search');
+                            <script>
+                            $(document).ready(function() {
+                                var slider = new Slider('#price_search');
 
-        // Sự kiện slideStop xảy ra khi người dùng kết thúc kéo thanh trượt
-        slider.on('slideStop', function (value) {
-            // Lấy giá trị từng đỉnh (min và max)
-            var minValue = value[0];
-            var maxValue = value[1];
+                                // Sự kiện slideStop xảy ra khi người dùng kết thúc kéo thanh trượt
+                                slider.on('slideStop', function(value) {
+                                    // Lấy giá trị từng đỉnh (min và max)
+                                    var minValue = value[0];
+                                    var maxValue = value[1];
 
-            // Gán giá trị vào input hidden để gửi về máy chủ khi form được submit
-            $('#price_search').val(minValue + ',' + maxValue);
-        });
-    });
-</script>
+                                    // Gán giá trị vào input hidden để gửi về máy chủ khi form được submit
+                                    $('#price_search').val(minValue + ',' + maxValue);
+                                });
+                            });
+                            </script>
 
-                        <div class="shipping text-center"><!--shipping-->
-                            <img src="{{ asset('public/frontend/images/home/') }}" alt="" />
+                            <div class="shipping text-center">
+                                <!--shipping-->
+                                <img src="{{ asset('public/frontend/images/home/') }}" alt="" />
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div class="col-sm-9 padding-right">
                     @yield('content')
@@ -334,7 +326,8 @@
         </div>
     </section>
 
-    <footer id="footer"><!--Footer-->
+    <footer id="footer">
+        <!--Footer-->
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -429,8 +422,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ asset('public/frontend/images/home/DSC_9639.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('public/frontend/images/home/DSC_9639.jpg') }}" alt="" />
                                     </div>
                                     <!-- <div class="overlay-icon">
           <i class="fa fa-play-circle-o"></i>
@@ -535,7 +527,8 @@
             </div>
         </div>
 
-    </footer><!--/Footer-->
+    </footer>
+    <!--/Footer-->
 
 
 
