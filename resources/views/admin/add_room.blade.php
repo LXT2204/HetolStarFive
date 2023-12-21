@@ -42,7 +42,7 @@
                                     placeholder="Mô tả phòng"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Nội dung phòng</label>
+                                <label for="exampleInputPassword1">Tiện ích phòng</label>
                                 <textarea style="resize: none" rows="8" class="form-control" name="room_content" id="id4"
                                     placeholder="Nội dung phòng"></textarea>
                             </div>

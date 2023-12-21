@@ -34,8 +34,7 @@
                             <p>92-94 Hang Trong Street Hoan Kiem District, Hà Nội Việt Nam</p>
                         </a>
 
-                        <input type="button" value="Thêm giỏ hàng" class="btn btn-default add-to-cart"
-                            data-id_room="{{ $room->room_id }}" name="add-to-cart">
+                        <a href="{{ URL::to('/chi-tiet/' . $room->room_id) }}" class="btn btn-default add-to-cart"></i>Đặt Phòng</a>
                     </form>
 
 
@@ -45,8 +44,7 @@
 
             <div class="choose">
                 <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
+                    
                 </ul>
             </div>
         </div>

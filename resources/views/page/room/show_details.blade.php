@@ -15,12 +15,14 @@
     position: relative;
     overflow: hidden;
     text-align: center;
+    background-image: url("../../../../public/uploads/room/{{ $value->room_image }}");
+z-index: 200;
 }
 
 .menu_detail {
     position: absolute;
     left: 0;
-    z-index: 900;
+    z-index: 100;
     width: 100%;
     bottom: 0;
 }
@@ -30,7 +32,7 @@
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: #fff;
+    background: black;
     border-radius: 50px;
     margin: 0 .2em 1em;
     transition: all .3s ease;
@@ -76,12 +78,7 @@
     <div class="col-sm-8">
         <div class="view-room">
             <div class="slider-detailr-container-detail">
-                <div class="menu_detail">
-                    <label for="slider-detail-dot-1"></label>
-                    <label for="slider-detail-dot-2"></label>
-                    <label for="slider-detail-dot-3"></label>
-                </div>
-
+               
                 <input id="slider-detail-dot-1" type="radio" name="slider-details" checked>
                 <div class="slider-detail slider-detail-1"></div>
 
@@ -90,6 +87,11 @@
 
                 <input id="slider-detail-dot-3" type="radio" name="slider-details">
                 <div class="slider-detail slider-detail-3"></div>
+                <div class="menu_detail">
+                    <label for="slider-detail-dot-1"></label>
+                    <label for="slider-detail-dot-2"></label>
+                    <label for="slider-detail-dot-3"></label>
+                </div>
             </div>
         </div>
 
@@ -202,26 +204,24 @@
 
     </div>
 </div>
-<!--/category-tab-->
-@endforeach
 <div class="recommended_items">
     <!--recommended_items-->
     <h2 class="title text-center">Các phòng gợi ý</h2>
 
-    <div id="recommended-item-carousel" class="carousel slider-detail" data-ride="carousel">
-        <div class="carousel-inner">
+   
             <div class="item active">
                 @foreach($relate as $key => $lienquan)
                 <div class="col-sm-4">
                     <div class="room-image-wrapper">
                         <div class="single-rooms">
                             <div class="roominfo text-center room-related">
-                                <img src="../../../../public/uploads/room/{{ $value->room_image }}" alt="" />
+                            <a href="{{ URL::to('/chi-tiet/' . $lienquan->room_id) }}">                             
+                                   <img src="../../../../public/uploads/room/{{ $lienquan->room_image }}" alt="" />
                                 <h2>{{number_format($lienquan->room_price,0,',','.').' '.'VNĐ'}}</h2>
                                 <p>{{$lienquan->room_name}}</p>
 
                             </div>
-
+</a>
                         </div>
                     </div>
                 </div>
@@ -232,4 +232,10 @@
             {{--   <ul class="pagination pagination-sm m-t-none m-b-none">
                        {!!$relate->links()!!}
                       </ul> --}}
+        </div>
+    </div>
+</div>
+<!--/category-tab-->
+@endforeach
+
             @endsection

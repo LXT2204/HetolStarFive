@@ -48,9 +48,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <form action="{{(URL::to('/admin_dashboard'))}}" method="post">
                 {{ csrf_field() }}
                 <p>Email</p>
-                <input type="text" class="ggg" name="admin_email" placeholder="E-MAIL" required="">
+                <input type="text" class="ggg" name="admin_email" placeholder="E-MAIL" required="" style="color:black">
                 <p>Mật khẩu</p>
-                <input type="password" class="ggg" name="admin_password" placeholder="Mật Khẩu" required="">
+                <input type="password" class="ggg" name="admin_password" placeholder="Mật Khẩu" required="" style="color:black">
                 <?php
 	$message = Session::get('message');
 	if($message){

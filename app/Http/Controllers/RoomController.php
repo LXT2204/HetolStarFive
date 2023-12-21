@@ -117,6 +117,14 @@ class RoomController extends Controller
             Session::put('message', 'update room successfully!');
             return Redirect::to('all-room');
         }
+        else{           $old_room=  DB::table('tbl_room')->where('room_id',$room_id)->get();
+foreach($old_room as $key=>$value){
+            $data['room_image'] = $value->room_image;}
+            DB::table('tbl_room')->where('room_id',$room_id)->update($data);
+            Session::put('message', 'update room successfully!');
+            return Redirect::to('all-room');
+
+        }
         
 
     }
@@ -134,7 +142,7 @@ class RoomController extends Controller
        $cate_room = DB::table('tbl_category_room')->where('category_status','0')->orderby('category_id','desc')->get();
 
        $details_room = DB::table('tbl_room')
-       ->join('tbl_category_room','tbl_category_room.category_id','=','tbl_room.category_id')
+       ->join('tbl_category_room','tbl_category_room.category_id','=','tbl_room.category_id')->where('tbl_room.room_id',$room_id)
       ->get();
 
        foreach($details_room as $key => $value){

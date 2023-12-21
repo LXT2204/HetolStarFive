@@ -29,9 +29,6 @@
                         <td class="Check_out">Checkout</td>
                         <td class="quantity">Số ngày thuê</td>
                         <td class="total">Tổng Tiền</td>
-                        <td></td>
-
-
                     </tr>
                 </thead>
                 <tbody>

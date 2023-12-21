@@ -19,14 +19,10 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="{{ asset('public/frontend/images/ico/favicon.ico') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-        href="{{ asset('public/frontend/images/ico/apple-touch-icon-144-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-        href="{{ asset('public/frontend/images/ico/apple-touch-icon-114-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-        href="{{ asset('public/frontend/images/ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed"
-        href="{{ asset('public/frontend/images/ico/apple-touch-icon-57-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('public/frontend/images/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('public/frontend/images/ico/apple-touch-icon-114-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('public/frontend/images/ico/apple-touch-icon-72-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('public/frontend/images/ico/apple-touch-icon-57-precomposed.png') }}">
 </head>
 <!--/head-->
 
@@ -68,14 +64,11 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="/index.php"><img
-                                    src="{{ asset('public/frontend/images/home/HETOL-removebg-preview.png') }}"
-                                    alt="" /></a>
+                            <a href="/index.php"><img src="{{ asset('public/frontend/images/home/HETOL-removebg-preview.png') }}" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa"
-                                    data-toggle="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                     Hồ Chí Minh
                                     <span class="caret"></span>
                                 </button>
@@ -95,29 +88,29 @@
                             <ul class="nav navbar-nav">
 
                                 <?php
-                                   $customer_id = Session::get('customer_id');
-                                   if($customer_id!=NULL){ 
-                                 ?>
-                                <li><a href="{{ URL::to('/user/' . $customer_id) }}"><i class="fa-solid fa-user"></i>
-                                        Tài Khoản</a></li>
+                                $customer_id = Session::get('customer_id');
+                                if ($customer_id != NULL) {
+                                ?>
+                                    <li><a href="{{ URL::to('/user/' . $customer_id) }}"><i class="fa-solid fa-user"></i>
+                                            Tài Khoản</a></li>
 
 
-                                <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-cart"></i> Phòng đã chọn</a>
-                                </li>
-                                <li><a href="{{ URL::to('/cart/' . $customer_id) }}"><i class="fa fa-cart"></i>
-                                        Thông tin đơn đặt</a></li>
-                                <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
-                                </li>
+                                    <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-cart"></i> Phòng đã chọn</a>
+                                    </li>
+                                    <li><a href="{{ URL::to('/cart/' . $customer_id) }}"><i class="fa fa-cart"></i>
+                                            Thông tin đơn đặt</a></li>
+                                    <li><a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
+                                    </li>
 
 
                                 <?php
-                            }else{
-                                 ?>
-                                <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
-                                </li>
-                                <?php 
-                             }
-                                 ?>
+                                } else {
+                                ?>
+                                    <li><a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
 
                             </ul>
                         </div>
@@ -138,8 +131,12 @@
                                 {{csrf_field()}}
                                 <div class="search_box_flex">
                                     <div class="search_box">
-
-
+                                        <div class="search_box_icon">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </div>
+                                        <div class="search_box_search">
+                                            <input type="text" placeholder="Search" />
+                                        </div>
                                     </div>
                                     <div class="search_box_check_in">
                                         <div class="fa-regular fa-calendar"></div>
@@ -195,8 +192,7 @@
                                     <button type="button" class="btn btn-default get">BOOKING NOW</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="{{ asset('public/frontend/images/home/Introducing-InterContinental-Danang-Danang-Private-Car.jpeg') }}"
-                                        class="girl img-responsive" alt="" />
+                                    <img src="{{ asset('public/frontend/images/home/Introducing-InterContinental-Danang-Danang-Private-Car.jpeg') }}" class="girl img-responsive" alt="" />
                                     <img src="{{ asset('public/frontend/images/home/') }}" class="pricing" alt="" />
                                 </div>
                             </div>
@@ -210,8 +206,7 @@
                                     <button type="button" class="btn btn-default get">BOOKING NOW</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="{{ asset('public/frontend/images/home/InterContinental+Danang+Sun+Peninsula+Resort.jpg') }}"
-                                        class="girl img-responsive" alt="" />
+                                    <img src="{{ asset('public/frontend/images/home/InterContinental+Danang+Sun+Peninsula+Resort.jpg') }}" class="girl img-responsive" alt="" />
                                     <img src="{{ asset('public/frontend/images/home/') }}" class="pricing" alt="" />
                                 </div>
                             </div>
@@ -227,8 +222,7 @@
                                     <button type="button" class="btn btn-default get">BOOKING NOW</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="{{ asset('public/frontend/images/home/002955-01-PHS_Pool_Hero_mHQ-Park Hyatt Saigon.jpg') }}"
-                                        class="girl img-responsive" alt="" />
+                                    <img src="{{ asset('public/frontend/images/home/002955-01-PHS_Pool_Hero_mHQ-Park Hyatt Saigon.jpg') }}" class="girl img-responsive" alt="" />
                                     <img src="{{ asset('public/frontend/images/home/') }}" class="pricing" alt="" />
                                 </div>
                             </div>
@@ -262,8 +256,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a
-                                            href="{{ URL::to('/danh-muc/' . $category->category_id) }}">{{ $category->category_name }}</a>
+                                        <a href="{{ URL::to('/danh-muc/' . $category->category_id) }}">{{ $category->category_name }}</a>
                                     </h4>
                                 </div>
                             </div>
@@ -281,9 +274,7 @@
                             <form action="{{ url('/tim-kiem-khoang-tien') }}" method="POST" id="searchForm">
                                 {{ csrf_field() }}
                                 <div class="well text-center">
-                                    <input type="text" name="price_search" id="price_search" class="span2" value=""
-                                        data-slider-min="0" data-slider-max="30000000" data-slider-step="100000"
-                                        data-slider-value="[0,30000000]" id="sl2"><br />
+                                    <input type="text" name="price_search" id="price_search" class="span2" value="" data-slider-min="0" data-slider-max="30000000" data-slider-step="100000" data-slider-value="[0,30000000]" id="sl2"><br />
                                     <b class="pull-left">0 VNĐ</b> <b class="pull-right">30.000.000 VNĐ</b><br />
                                     <button type="submit">
                                         <span>Search</span>
@@ -292,24 +283,23 @@
                             </form>
 
                             <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-                            <script
-                                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.js">
                             </script>
 
                             <script>
-                            $(document).ready(function() {
-                                var slider = new Slider('#price_search');
+                                $(document).ready(function() {
+                                    var slider = new Slider('#price_search');
 
-                                // Sự kiện slideStop xảy ra khi người dùng kết thúc kéo thanh trượt
-                                slider.on('slideStop', function(value) {
-                                    // Lấy giá trị từng đỉnh (min và max)
-                                    var minValue = value[0];
-                                    var maxValue = value[1];
+                                    // Sự kiện slideStop xảy ra khi người dùng kết thúc kéo thanh trượt
+                                    slider.on('slideStop', function(value) {
+                                        // Lấy giá trị từng đỉnh (min và max)
+                                        var minValue = value[0];
+                                        var maxValue = value[1];
 
-                                    // Gán giá trị vào input hidden để gửi về máy chủ khi form được submit
-                                    $('#price_search').val(minValue + ',' + maxValue);
+                                        // Gán giá trị vào input hidden để gửi về máy chủ khi form được submit
+                                        $('#price_search').val(minValue + ',' + maxValue);
+                                    });
                                 });
-                            });
                             </script>
 
                             <div class="shipping text-center">
@@ -342,8 +332,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ asset('public/frontend/images/home/9354b2e0244ee310ba5f.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('public/frontend/images/home/9354b2e0244ee310ba5f.jpg') }}" alt="" />
                                     </div>
                                     <!-- <div class="overlay-icon">
           <i class="fa fa-play-circle-o"></i>
@@ -358,8 +347,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ asset('public/frontend/images/home/z4866237009450_2bd4aad9e07f1eadc944f3eb04d4ebfd.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('public/frontend/images/home/z4866237009450_2bd4aad9e07f1eadc944f3eb04d4ebfd.jpg') }}" alt="" />
                                     </div>
                                     <!-- <div class="overlay-icon">
           <i class="fa fa-play-circle-o"></i>
@@ -374,8 +362,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ asset('public/frontend/images/home/z4866426052703_ab1c9dfa5ed8f562615a337e8695da55.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('public/frontend/images/home/z4866426052703_ab1c9dfa5ed8f562615a337e8695da55.jpg') }}" alt="" />
                                     </div>
                                     <!-- <div class="overlay-icon">
           <i class="fa fa-play-circle-o"></i>
@@ -390,8 +377,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ asset('public/frontend/images/home/z4866605058072_e7eef92aa32b93e8b7617d13d993bb0d.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('public/frontend/images/home/z4866605058072_e7eef92aa32b93e8b7617d13d993bb0d.jpg') }}" alt="" />
                                     </div>
                                     <!-- <div class="overlay-icon">
           <i class="fa fa-play-circle-o"></i>
@@ -406,8 +392,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="{{ asset('public/frontend/images/home/z4866610576128_7df18d9fc7008efaf1bee13f299a0e91.jpg') }}"
-                                            alt="" />
+                                        <img src="{{ asset('public/frontend/images/home/z4866610576128_7df18d9fc7008efaf1bee13f299a0e91.jpg') }}" alt="" />
                                     </div>
                                     <!-- <div class="overlay-icon">
           <i class="fa fa-play-circle-o"></i>
@@ -521,8 +506,7 @@
             <div class="container">
                 <div class="row">
                     <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                    <p class="pull-right">Designed by <span><a target="_blank"
-                                href="http://www.themeum.com">Themeum</a></span></p>
+                    <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
                 </div>
             </div>
         </div>

@@ -30,9 +30,8 @@
                                     placeholder="Mô tả danh mục"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Từ khóa loại phòng</label>
-                                <textarea style="resize: none" rows="8" class="form-control" name="category_room_keywords"
-                                    id="exampleInputPassword1" placeholder="Mô tả danh mục"></textarea>
+                                <input type = "hidden" style="resize: none" rows="8" class="form-control" name="category_room_keywords"
+                                    id="exampleInputPassword1" placeholder="Mô tả danh mục" value="a"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Trạng thái</label>

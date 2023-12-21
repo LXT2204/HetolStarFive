@@ -290,7 +290,7 @@ a#scrollUp i {
 /* Search-box */
 
 .search_box_flex {
-    margin-top: 10px;
+    margin-top: -15px;
     display: flex;
     height: 60px;
 }
@@ -344,9 +344,9 @@ a#scrollUp i {
 
 .search_box_check_in {
     display: flex;
-    width: 170px;
+    width: 230px;
     height: 60px;
-    padding: 13px 0 0 40px;
+    padding: 6px 0 6px 40px;
     border-right: 5px solid #dbdde1;
     background: #fff;
     border: medium none;
@@ -363,7 +363,6 @@ a#scrollUp i {
 
 .search_box_check_in_time p1 {
     display: block;
-    margin-left: 20px;
     font-weight: 300;
     font-size: 11px;
 }
@@ -374,11 +373,15 @@ a#scrollUp i {
     font-weight: 500;
 }
 
+.fa-regular.fa-calendar{
+    padding: 13px;
+}
+
 .search_box_check_out {
     display: flex;
-    width: 170px;
+    width: 230px;
     height: 60px;
-    padding: 13px 0 0 40px;
+    padding: 6px 0 6px 40px;
     border-left: 1px solid #dbdde1;
     background: #fff;
     border: medium none;
@@ -1796,18 +1799,6 @@ h2.title {
     padding: 3px 7px;
 }
 
-.breadcrumbs .breadcrumb li a:after {
-    content: "";
-    height: auto;
-    width: auto;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent transparent #0f38aa;
-    position: absolute;
-    top: 11px;
-    left: 48px;
-}
-
 .breadcrumbs .breadcrumb>li+li:before {
     content: " ";
 }
@@ -1825,6 +1816,7 @@ h2.title {
     font-weight: normal;
 }
 
+
 #cart_items .cart_info .table.table-condensed thead tr {
     height: 51px;
 }
@@ -1840,14 +1832,40 @@ h2.title {
 .cart_info table tr td {
     border-top: 0 none;
     vertical-align: inherit;
+
+}
+
+.cart_info table tr td.description{
+    padding-left: 60px;
+}
+
+.cart_info table tr td.Check_in{
+    width:220px;
+    padding-left: 70px;
+}
+
+.cart_info table tr td.Check_out{
+    width: 220px;
+    padding-left: 70px;
+}
+
+.cart_info table tr td.quantity{
+    width: 102px;
+}
+
+.cart_info table tr td.total{
+    padding-left: 50px;
+    width:172px;
 }
 
 #cart_items .cart_info .image {
-    padding-left: 30px;
+    padding-left: 55px;
+    width:180px;
 }
 
 #cart_items .cart_info .cart_description h4 {
     margin-bottom: 0;
+    font-size: 22px;
 }
 
 #cart_items .cart_info .cart_description h4 a {
@@ -1865,15 +1883,27 @@ h2.title {
     color: #696763;
     font-size: 18px;
 }
+#cart_items .cart_info .cart_total .cart_total_price{
+    color: #0f38aa;
+    font-size: 21px;
+    padding:14px 0 0 50px;
+}
 
 #cart_items .cart_info .cart_total_price {
     color: #0f38aa;
-    font-size: 24px;
+    font-size: 21px;
+    padding: 10px 0 0 19px;
 }
 
 .cart_product {
     display: block;
     margin: 15px -70px 10px 25px;
+}
+
+.cart_product img{
+    height: 120px;
+    width: 120px;
+    border-radius: 5px;
 }
 
 .cart_quantity_button a {
@@ -1891,9 +1921,24 @@ h2.title {
 .cart_quantity_input {
     color: #696763;
     float: left;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
     text-align: center;
     font-family: "Roboto", sans-serif;
+    width: 100%;
+    border: solid 2px #ccc;
+    border-radius: 5px;
+    padding:0 10px 0 10px;
+    margin-top: 60px;
+}
+
+input.btn.btn-default.btn-sm{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 22px 0 0 65px;
+    background: #0f38aa;
+    color: #fff;
+    border-radius: 5px;
 }
 
 .cart_delete {
@@ -1945,13 +1990,17 @@ h2.title {
 
 .total_area span {
     float: right;
+    font-weight: 600;
+    color: #0f38aa;
 }
 
 .total_area ul li {
     background: #e6e4df;
     color: #696763;
     margin-top: 10px;
-    padding: 7px 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
 }
 
 .user_option label {
@@ -2013,8 +2062,9 @@ textarea {
 .update,
 .check_out {
     background: #0f38aa;
-    border-radius: 0;
+    border-radius: 5px;
     color: #ffffff;
+    font-size: 22px;
     margin-top: 18px;
     border: none;
     padding: 5px 15px;
@@ -2025,7 +2075,7 @@ textarea {
 }
 
 .check_out {
-    margin-left: 20px;
+    margin-left: 40%;
 }
 
 /*************************
@@ -2585,6 +2635,14 @@ textarea {
     margin-top: 16px;
 }
 
+.btn.btn-primary.add-to-cart {
+    background: #0f38aa;
+    color:#fff;
+    border: 0 none;
+    border-radius: 0;
+    margin-top: 16px;
+}
+
 .blank-arrow {
     position: relative;
 }
@@ -2701,4 +2759,14 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #0f38aa;
+}
+
+/*************************
+******* Search result CSS ********
+**************************/
+
+.roominfo.text-center img{
+    height: 160px;
+    border-radius: 10px;
+    width: 230px;
 }

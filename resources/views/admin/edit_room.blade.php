@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh phòng</label>
                             <input type="file" name="room_image" class="form-control" id="exampleInputEmail1">
-                            <img src="{{ URL::to('public/uploads/room/' . $pro->room_image) }}" height="100"
+                            <img src=" ../../../../../public/uploads/room/{{$pro->room_image}}" height="100"
                                 width="100">
                         </div>
                         <div class="form-group">
@@ -44,7 +44,7 @@
                                 id="ckeditor2">{{ $pro->room_desc }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nội dung phòng</label>
+                            <label for="exampleInputPassword1">Tiện ích phòng</label>
                             <textarea style="resize: none" rows="8" class="form-control" name="room_content"
                                 id="ckeditor3">{{ $pro->room_content }}</textarea>
                         </div>
