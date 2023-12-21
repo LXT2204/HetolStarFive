@@ -7,12 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | HotelStarFive</title>
+
     <link href="{{ asset('public/frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/prettyPhoto.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/price-range.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/frontend/css/chatbox.css') }}" rel="stylesheet">
     <link href="{{ asset('public/frontend/css/responsive.css') }}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -27,6 +29,10 @@
         href="{{ asset('public/frontend/images/ico/apple-touch-icon-72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed"
         href="{{ asset('public/frontend/images/ico/apple-touch-icon-57-precomposed.png') }}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
 </head>
 <!--/head-->
 
@@ -324,8 +330,38 @@
                 </div>
             </div>
         </div>
-    </section>
 
+    </section>
+    <!-- Chatbox -->
+    <div class="show-chatbot">
+        <button class="chatbot-toggler">
+            <span class="material-symbols-outlined">mode_comment</span>
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="chatbot">
+            <header>
+                <h2>Chatbot</h2>
+                <span class="close-btn material-symbols-outlined">close</span>
+            </header>
+            <ul class="chatbox">
+                <li class="chat incoming">
+                    <span class="material-symbols-outlined">smart_toy</span>
+                    <p>Hi <br>How can I help you today?</p>
+                </li>
+                <div class="option">
+                    <button class="buttonn" value="1"> Bạn có những loại phòng nào? </button>
+                    <button class="buttonn" value="2"> Tôi có thể đặt phòng như thế nào? </button>
+                    <button class="buttonn" value="3"> Tôi có thể thanh toán như thế nào? </button>
+                    <button class="buttonn" value="4"> Tôi có thể checkin vào lúc nào? </button>
+                    <button class="buttonn" value="5"> Liên hệ với chúng tôi </button>
+                </div>
+            </ul>
+            <div class="chat-input">
+                <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+                <span class="material-symbols-outlined">send</span>
+            </div>
+        </div>
+    </div>
     <footer id="footer">
         <!--Footer-->
         <div class="footer-top">
@@ -538,6 +574,13 @@
     <script src="{{ asset('public/frontend/js/price-range.js') }}"></script>
     <script src="{{ asset('public/frontend/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('public/frontend/js/main.js') }}"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+        integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('public/frontend/js/chatbox.js') }}"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+        integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
