@@ -103,6 +103,8 @@ Route::get('/manage-order', 'App\Http\Controllers\OrderController@manage_order')
 Route::get('/view-order/{order_id}', 'App\Http\Controllers\OrderController@view_order');
 Route::post('/accept/{order_id}', 'App\Http\Controllers\OrderController@accept');
 Route::post('/refuse/{order_id}', 'App\Http\Controllers\OrderController@refuse');
+Route::post('/refuse-user/{order_id}', 'App\Http\Controllers\CheckoutController@refuse_user');
+
 Route::get('/delete-order/{order_id}', 'App\Http\Controllers\OrderController@delete_order');
 //User
 Route::get('/cart/{customer_id}', 'App\Http\Controllers\CheckoutController@show_cart');

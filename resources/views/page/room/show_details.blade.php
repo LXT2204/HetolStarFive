@@ -130,18 +130,21 @@ z-index: 200;
                         value="NULL" />
                     <input name="roomid_hidden" type="hidden" value="{{$value->room_id}}" />
                 </div>
-
-
-            </span>
-            <div> <input type="submit" value="Đặt phòng" class="btn btn-primary btn-sm add-to-cart"
-                    data-id_room="{{ $value->room_id }}" name="add-to-cart">
                 <?php
 	$message = Session::get('message');
 	if($message){
-		echo '<span class="text-alert">'.$message.'</span>';
+		echo '<span class="text-alert" style="color: red">'.$message.'</span>';
 		Session::put('message',null);
 	}
-	?></div>
+	?>
+                <div> <input type="submit" value="Đặt phòng" class="btn btn-primary btn-sm add-to-cart"
+                    data-id_room="{{ $value->room_id }}" name="add-to-cart">
+              
+
+            </span>
+            
+     </div>
+     
         </form>
 
         <p><b>Tình trạng:</b> Còn phòng</p>
@@ -161,8 +164,8 @@ z-index: 200;
         <ul class="nav nav-tabs">
             <li class="active"><a href="#details" data-toggle="tab">Mô tả</a></li>
             <li><a href="#companyprofile" data-toggle="tab">Dịch vụ phòng</a></li>
-
-            <li><a href="#reviews" data-toggle="tab">Đánh giá</a></li>
+<!-- 
+            <li><a href="#reviews" data-toggle="tab">Đánh giá</a></li> -->
         </ul>
     </div>
     <div class="tab-content">

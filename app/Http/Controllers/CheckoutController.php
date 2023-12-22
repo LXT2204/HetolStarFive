@@ -47,19 +47,23 @@ public function checkout(){
     return view('page.checkout.show_checkout')->with('category',$cate_room);
 }
 public function save_checkout_customer(Request $request){
+   
     $data = array();
     $data['booking_name'] = $request->booking_name;
     $data['booking_phone'] = $request->booking_phone;
     $data['booking_email'] = $request->booking_email;
     $data['booking_notes'] = $request->booking_notes;
     $data['booking_address'] = $request->booking_address;
-
+if($data['booking_name'] && $data['booking_phone']&& $data['booking_email']&&$data['booking_address']){
     $booking_id = DB::table('tbl_booking')->insertGetId($data);
 
     Session::put('booking_id',$booking_id);
     
-    return Redirect::to('/payment');
-}
+    return Redirect::to('/payment');}
+    else{
+        Session::put('message', 'Vui lòng nhập đủ thông tin');
+        return Redirect::to('/checkout');}
+    }
 public function payment(Request $request){
     //seo 
     $meta_desc = "Đăng nhập thanh toán"; 
@@ -87,6 +91,7 @@ public function login_customer(Request $request){
         Session::put('customer_id',$result->customer_id);
         return Redirect::to('/checkout');
     }else{
+        Session::put('message', 'Mật khẩu hoặc tài khoản bị sai.Vui lòng nhập lại');
         return Redirect::to('/login-checkout');
     }
     Session::save();
@@ -168,6 +173,7 @@ public function edit_customer($customerId){
 
 
 }
+
 public function update_user(Request $request, $customer_id)
     {
         $data = array();
@@ -178,7 +184,18 @@ public function update_user(Request $request, $customer_id)
         $data['customer_address'] = $request->customer_address;
         DB::table('tbl_customers')->where('customer_id', $customer_id)->update($data);
         Session::put('message', 'Cập nhật user thành công');
-        return Redirect::to('');
+        return Redirect::to('/user/' .$customer_id);
 
+    }
+    public function refuse_user($orderId)
+    {  
+        $data = array();
+        $data['order_status'] = 0;
+
+        DB::table('tbl_order')->where('order_id', $orderId)->update($data);
+        $customer =DB::table('tbl_order')->where('order_id', $orderId)->get();
+        foreach($customer as $key=> $value){$customerId=$value->customer_id;}
+
+        return Redirect::to('/cart/'.$customerId);
     }
 }

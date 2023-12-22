@@ -44,6 +44,12 @@
                         <td>{{ number_format($ord->order_total, 0, ',', '.') . ' ' . 'VNĐ' }} </td>
                         <td>@if($ord->order_status==1)
                             Đơn đặt phòng mới
+                            <td>  
+                        <form role="form" action="{{ URL::to('/refuse-user/' . $ord->order_id) }}" method="post">
+                    {{ csrf_field() }}
+
+                    <button type="submit" class="btn btn-danger">Hủy Đặt Phòng</button>
+                </form></td>
                             @elseif($ord->order_status==0)
                             Đã Hủy đơn đặt phòng
                             @elseif($ord->order_status==2)
@@ -53,8 +59,7 @@
 
 
                         <td>
-
-
+                      
                         </td>
                     </tr>
                     @endforeach

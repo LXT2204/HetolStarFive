@@ -8,6 +8,7 @@ const chatbox = document.querySelector(".chatbox");
 const option = document.querySelector(".option");
 const sendChatBtn = document.querySelector(".chat-input span");
 const closeBtn = document.querySelector(".close-btn");
+const bodyChatbot = document.querySelector(".body-chatbot");
 
 const scrollToBottom = () => {
     chatbox.scrollTo(0, chatbox.scrollHeight);
@@ -67,7 +68,7 @@ const handleChat = () => {
     }
     socket.emit('message', data);
 
-    const incomingChatLi = createChatLi("Typing...", "incoming");
+    const incomingChatLi = createChatLi("Chotto matte ...", "incoming");
     chatbox.appendChild(incomingChatLi);
     scrollToBottom();
     option.style.display = "none";
@@ -108,7 +109,11 @@ chatInput.addEventListener("keydown", (e) => {
 });
 
 chatbotToggler.addEventListener("click", () => {
-    document.body.classList.toggle("show-chatbot");
+    bodyChatbot.classList.toggle("show-chatbot");
+});
+
+closeBtn.addEventListener("click", () => {
+    bodyChatbot.classList.remove("show-chatbot");
 });
 
 sendChatBtn.addEventListener("click", handleChat);

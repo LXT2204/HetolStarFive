@@ -78,22 +78,8 @@
                         <div class="logo pull-left">
                             <a href="/index.php"><img src="{{ asset('public/frontend/images/home/HETOL-removebg-preview.png') }}" alt="" /></a>
                         </div>
-                        <div class="btn-group pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    Hồ Chí Minh
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Hồ Chí Minh</a></li>
-                                    <li><a href="#">Hà Nội</a></li>
-                                    <li><a href="#">Đà Nẵng</a></li>
-                                    <li><a href="#">Sa Pa</a></li>
-                                </ul>
-                            </div>
 
 
-                        </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
@@ -146,19 +132,17 @@
                                         <div class="search_box_icon">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </div>
-                                        <div class="search_box_search">
-                                            <input type="text" placeholder="Search" />
-                                        </div>
+                                        
                                     </div>
                                     <div class="search_box_check_in">
-                                        <div class="fa-regular fa-calendar"></div>
+                                        <div class="fa-solid fa-calendar-days"></div>
                                         <div class="search_box_check_in_time">
                                             <p1>Check in</p1>
                                             <input type="date" name="checkin_search">
                                         </div>
                                     </div>
                                     <div class="search_box_check_out">
-                                        <div class="fa-regular fa-calendar"></div>
+                                        <div class="fa-regular fa-calendar-days"></div>
                                         <div class="search_box_check_in_time">
                                             <p1>Check out</p1>
                                             <input type="date" name="checkout_search">
@@ -326,18 +310,16 @@
                 </div>
             </div>
         </div>
-
     </section>
     <!-- Chatbox -->
-    <div class="show-chatbot">
+    <div class="body-chatbot">
         <button class="chatbot-toggler">
             <span class="material-symbols-outlined">mode_comment</span>
-            <span class="material-symbols-outlined">close</span>
+            <span class="material-symbols-outlined close-btn">close</span>
         </button>
         <div class="chatbot">
             <header>
-                <h2>Chatbot</h2>
-                <span class="close-btn material-symbols-outlined">close</span>
+                <h2> </h2>
             </header>
             <ul class="chatbox">
                 <li class="chat incoming">

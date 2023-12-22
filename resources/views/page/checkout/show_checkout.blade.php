@@ -33,7 +33,13 @@
                                     placeholder="Số điện thoại">
                                 <textarea name="booking_notes" class="booking_notes" placeholder="Ghi chú cho khách sạn"
                                     rows="5"></textarea>
-
+                                    <?php
+	$message = Session::get('message');
+	if($message){
+		echo '<span class="text-alert" style="color: red">'.$message.'</span>';
+		Session::put('message',null);
+	}
+	?>
 
 
 

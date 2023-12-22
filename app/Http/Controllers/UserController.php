@@ -46,7 +46,7 @@ class UserController extends Controller
         return Redirect::to('add-users');
 
         DB::table('tbl_customers')->insert($data);
-        Session::put('message', 'Thêm user user');
+        Session::put('message', 'Thêm user thành công');
         return Redirect::to('add-user');
     }
     public function all_user()

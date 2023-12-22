@@ -5,6 +5,13 @@
             <div class="panel-heading">
                 Danh Mục Loại Phòng
             </div>
+            <?php
+                $message = Session::get('message');
+                if ($message) {
+                    echo '<span class="text-alert">' . $message . '</span>';
+                    Session::put('message', null);
+                }
+                ?>
             <div class="row w3-res-tb">
                 <div class="col-sm-5 m-b-xs">
                    

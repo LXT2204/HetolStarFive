@@ -5,7 +5,13 @@
         <!--sign up form-->
         <h2>Thông Tin Tài khoản</h2>
         @foreach ($edit_user as $key => $edit_value)
-
+        <?php
+	$message = Session::get('message');
+	if($message){
+		echo '<span class="text-alert" style="color: red">'.$message.'</span>';
+		Session::put('message',null);
+	}
+	?>
         <form action="{{ URL::to('/update-customer/' . $edit_value->customer_id) }}" method="POST">
             {{ csrf_field() }}
             <input type="text" name="customer_name" value="{{$edit_value->customer_name}}" placeholder="Họ và tên" />

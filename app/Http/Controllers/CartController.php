@@ -31,10 +31,10 @@ class CartController extends Controller
         $quantity= floor($qty / (60*60*24));
         if (empty($quantity_checkin)||empty($quantity_checkout)) {
             Session::put('message', 'Không được để trống checkin và checkout');
-            return Redirect::to('/chi-tiet/{{$roomId}}');
+            return Redirect::to('/chi-tiet/'.$roomId);
           
         } else if( strtotime($quantity_checkin)>strtotime($quantity_checkout) ){ Session::put('message', 'Ngày checkout phải lớn hơn ngày checkin');
-            return Redirect::to('/chi-tiet/{{$roomId}}');
+            return Redirect::to('/chi-tiet/'.$roomId);
            
         }
         else{ $data['id'] = $room_info->room_id;

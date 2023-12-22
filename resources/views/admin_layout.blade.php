@@ -41,11 +41,15 @@
         <script src="{{ asset('public/backend/js/jquery2.0.3.min.js') }}"></script>
         <script src="{{ asset('public/backend/js/raphael-min.js') }}"></script>
         <script src="{{ asset('public/backend/js/morris.js') }}"></script>
+        <link href="{{ asset('public/frontend/css/chatbox.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/frontend/css/main.css') }}" rel="stylesheet">
+
+
 
     </head>
 
     <body>
-        <section id="container">
+        <section id="container" style="margin-top : 0px">
             <!--header start-->
             <header class="header fixed-top clearfix">
                 <!--logo start-->
@@ -62,9 +66,7 @@
                 <div class="top-nav clearfix">
                     <!--search & user info start-->
                     <ul class="nav pull-right top-menu">
-                        <li>
-                            <input type="text" class="form-control search" placeholder=" Search">
-                        </li>
+                     
                         <!-- user login dropdown start-->
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -81,8 +83,7 @@
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu extended logout">
-                                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+
                                 <li><a href="{{ URL::to('/logout') }}"><i class="fa fa-key"></i>Đăng xuất</a></li>
                             </ul>
                         </li>
@@ -115,7 +116,7 @@
 
                                 </ul>
                             </li>
-                        
+
 
                             <li class="sub-menu">
                                 <a href="javascript:;">
@@ -552,7 +553,39 @@
 
         });
         </script>
+        <div class="body-chatbot ">
+            <button class="chatbot-toggler">
+                <span class="material-symbols-outlined">Chat</span>
+                <span class="material-symbols-outlined close-btn">close</span>
+            </button>
+            <div class="chatbot">
+                <header>
+                    <h1 style="height=100px">
+
+                    </h1>
+                </header>
+                <ul class="chatbox">
+                    <li class="chat incoming">
+
+                    </li>
+                    <div class="option">
+
+                    </div>
+                </ul>
+                <div class="chat-input">
+                    <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+                    <span class="material-symbols-outlined">send</span>
+                </div>
+            </div>
+        </div>
         <!-- //calendar -->
+        <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+            integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('public/frontend/js/chatbox.js') }}"></script>
+        <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+            integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous">
+        </script>
     </body>
 
 
