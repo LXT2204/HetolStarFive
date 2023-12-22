@@ -346,7 +346,7 @@ a#scrollUp i {
     display: flex;
     width: 170px;
     height: 60px;
-    padding: 13px 0 0 40px;
+    padding: 10px 10px;
     border-right: 5px solid #dbdde1;
     background: #fff;
     border: medium none;
@@ -354,12 +354,12 @@ a#scrollUp i {
     font-family: "roboto";
 }
 
-.search_box_check_in:hover {
+/* .search_box_check_in:hover {
     background-color: #f3f4f5;
     color: black;
     border-radius: 20px;
     padding-left: 35px;
-}
+} */
 
 .search_box_check_in_time p1 {
     display: block;
@@ -378,7 +378,7 @@ a#scrollUp i {
     display: flex;
     width: 170px;
     height: 60px;
-    padding: 13px 0 0 40px;
+    padding: 10px 10px;
     border-left: 1px solid #dbdde1;
     background: #fff;
     border: medium none;
@@ -386,12 +386,12 @@ a#scrollUp i {
     font-family: "roboto";
 }
 
-.search_box_check_out:hover {
+/* .search_box_check_out:hover {
     background-color: #f3f4f5;
     color: black;
     border-radius: 20px;
     padding-left: 35px;
-}
+} */
 
 .search_box_room {
     padding: 11px;
@@ -519,7 +519,7 @@ ul.sub-menu {
 **************************/
 
 .container {
-    margin-top: 15px;
+    margin-top: 0px;
 }
 
 

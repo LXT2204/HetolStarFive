@@ -87,6 +87,7 @@ public function login_customer(Request $request){
         Session::put('customer_id',$result->customer_id);
         return Redirect::to('/checkout');
     }else{
+        Session::put('message', 'Mật khẩu hoặc tài khoản bị sai.Vui lòng nhập lại');
         return Redirect::to('/login-checkout');
     }
     Session::save();
