@@ -5,6 +5,13 @@
             <div class="panel-heading">
                 User
             </div>
+            <?php
+                $message = Session::get('message');
+                if ($message) {
+                    echo '<span class="text-alert">' . $message . '</span>';
+                    Session::put('message', null);
+                }
+                ?>
             <div class="row w3-res-tb">
                 <div class="col-sm-5 m-b-xs">
                    
@@ -46,7 +53,7 @@
                                     <a href="{{ URL::to('/edit-user/' . $user->customer_id) }}"
                                         class="active styling-edit" ui-toggle-class="">
                                         <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-                                    <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')"
+                                    <a onclick="return confirm('Bạn có chắc là muốn xóa user này ko?')"
                                         href="{{ URL::to('/delete-user/' . $user->customer_id) }}"
                                         class="active styling-edit" ui-toggle-class="">
                                         <i class="fa fa-times text-danger text"></i>

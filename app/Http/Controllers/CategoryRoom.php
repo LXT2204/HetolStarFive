@@ -44,11 +44,12 @@ class CategoryRoom extends Controller
         $data['category_name'] = $request->category_room_name;
         $data['category_desc'] = $request->category_room_desc;
         $data['category_status'] = $request->category_room_status;
-if($data['category_name'] &&$data['category_desc']&&$data['category_status']){
-        DB::table('tbl_category_room')->insert($data);
-        Session::put('message', 'Thêm loại phòng thành công');
-        return Redirect::to('add-category-room');}
-        else{Session::put('message', 'Vui lòng nhập đủ thông tin');
+if(empty($data['category_name']) ||empty($data['category_desc'])){
+    Session::put('message', 'Vui lòng nhập đủ thông tin');
+            return Redirect::to('add-category-room');
+       }
+        else{ DB::table('tbl_category_room')->insert($data);
+            Session::put('message', 'Thêm loại phòng thành công');
             return Redirect::to('add-category-room');}
     }
     public function unactive_category_room($category_room_id)

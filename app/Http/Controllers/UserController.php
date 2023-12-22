@@ -38,16 +38,18 @@ class UserController extends Controller
         $data['customer_email'] = $request->user_email;
         $data['customer_password'] = md5($request->user_password);
         $data['customer_address'] = $request->user_address;
-    
-        $customer_id = DB::table('tbl_customers')->insertGetId($data);
+    if( empty($data['customer_name'])||empty($data['customer_phone'])|| empty($data['customer_email'])||empty($data['customer_password'])||empty($data['customer_address']))
+    { Session::put('message', 'Vui lòng điền đủ thông tin');
+        return Redirect::to('add-users');}
+       else{ $customer_id = DB::table('tbl_customers')->insertGetId($data);
     
         Session::put('customer_id',$customer_id);
         Session::put('customer_name',$request->user_name);
+        Session::put('message', 'Thêm user thành công');
+
         return Redirect::to('add-users');
 
-        DB::table('tbl_customers')->insert($data);
-        Session::put('message', 'Thêm user thành công');
-        return Redirect::to('add-user');
+    }
     }
     public function all_user()
     {$this->AuthLogin();

@@ -6,13 +6,7 @@
             <header class="panel-heading">
                 Cập nhật user
             </header>
-            <?php
-                $message = Session::get('message');
-                if ($message) {
-                    echo '<span class="text-alert">' . $message . '</span>';
-                    Session::put('message', null);
-                }
-                ?>
+           
             <div class="panel-body">
                 @foreach ($edit_customer as $key => $edit_value)
                 <div class="position-center">

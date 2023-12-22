@@ -26,9 +26,9 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Từ khóa danh mục</label>
-                            <textarea style="resize: none" rows="8" class="form-control" name="category_room_status"
+                            <input type="hidden"  class="form-control" name="category_room_status"
                                 id="exampleInputPassword1"
-                                placeholder="Mô tả danh mục">{{ $edit_value->category_status }}</textarea>
+                                value="{{ $edit_value->category_status }}"></textarea>
                         </div>
                         <button type="submit" name="update_category_room" class="btn btn-info">Cập nhật danh
                             mục</button>

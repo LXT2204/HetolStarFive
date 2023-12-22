@@ -56,7 +56,12 @@ class RoomController extends Controller
         $data['room_status'] = $request->room_status;
         $get_image = $request->file('room_image');
 
-        if($get_image&&$data['room_name']&&$data['room_price']&&$data['room_desc']&&$data['room_content']&&$data['category_id']&& $data['room_status']){
+        if(empty($data['room_name'])||empty($data['room_price'])||empty($data['room_desc'])||empty($data['room_content'])||empty($data['category_id'])&& empty($data['room_status'])){
+            
+    	Session::put('message','Điền đầy đủ thông tin mô tả phòng');
+    	return Redirect::to('add-room');}
+           
+        else if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
             $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
@@ -64,12 +69,13 @@ class RoomController extends Controller
             $data['room_image'] = $new_image;
             DB::table('tbl_room')->insert($data);
             Session::put('message','Thêm phòng thành công');
-            return Redirect::to('add-room');
-        }else{
-       
+            return Redirect::to('add-room');}
+            else{       
+                Session::put('message','Điền đầy đủ thông tin mô tả phòng');
+                return Redirect::to('add-room');
+                
+            }
     	
-    	Session::put('message','Điền đầy đủ thông tin mô tả phòng');
-    	return Redirect::to('add-room');}
     }
     public function unactive_room($room_id){
         $this->AuthLogin();

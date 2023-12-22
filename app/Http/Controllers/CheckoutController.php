@@ -54,15 +54,16 @@ public function save_checkout_customer(Request $request){
     $data['booking_email'] = $request->booking_email;
     $data['booking_notes'] = $request->booking_notes;
     $data['booking_address'] = $request->booking_address;
-if($data['booking_name'] && $data['booking_phone']&& $data['booking_email']&&$data['booking_address']){
-    $booking_id = DB::table('tbl_booking')->insertGetId($data);
-
-    Session::put('booking_id',$booking_id);
+if(empty($data['booking_name']) || empty($data['booking_phone'])|| empty($data['booking_email'])||empty($data['booking_address'])){
+    Session::put('message', 'Vui lòng nhập đủ thông tin');
+    return Redirect::to('/checkout');}
     
-    return Redirect::to('/payment');}
     else{
-        Session::put('message', 'Vui lòng nhập đủ thông tin');
-        return Redirect::to('/checkout');}
+        $booking_id = DB::table('tbl_booking')->insertGetId($data);
+
+        Session::put('booking_id',$booking_id);
+        
+        return Redirect::to('/payment');}
     }
 public function payment(Request $request){
     //seo 
