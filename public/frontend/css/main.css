@@ -697,7 +697,7 @@ ul.sub-menu {
 }
 
 .searchform input {
-    border:none;
+    border: none;
     border-bottom: 2px solid #007cc2;
     color: #ccccc6;
     font-family: "Roboto", sans-serif;
@@ -712,8 +712,8 @@ ul.sub-menu {
     background-color: #f0f0e9;
 }
 
-.searchform-text{
-    display:flex;
+.searchform-text {
+    display: flex;
 }
 
 .searchform-btn {
@@ -736,7 +736,7 @@ ul.sub-menu {
     border-radius: 10px;
 }
 
-.searchform-btn span{
+.searchform-btn span {
     font-size: 16px;
     color: #ffffff;
     font-weight: 800;
@@ -2042,7 +2042,7 @@ input.btn.btn-default.btn-sm{
 .user_info input,
 select,
 textarea {
-    background: #f0f0e9;
+    /*background: #f0f0e9;*/
     border: 0;
     color: #696763;
     padding: 5px;
@@ -2759,6 +2759,7 @@ textarea {
 
 .contact-info .social-networks ul li a:hover {
     color: #0f38aa;
+
 }
 
 /*************************
@@ -2769,4 +2770,5 @@ textarea {
     height: 160px;
     border-radius: 10px;
     width: 230px;
+
 }
